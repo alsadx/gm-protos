@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package gateway;
+
+import "google/api/annotations.proto";
+import "sso/auth.proto";
+import "sso/user_info.proto";
+import "campaign/campaign.proto";
+
+option go_package = "alsadx.api.v1;apiv1";
+
+service Gateway {
+    // Auth Service
+    rpc Register (auth.RegisterRequest) returns (auth.RegisterResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/register"
+            body: "*"
+        };
+    }
+    rpc Login (auth.LoginRequest) returns (auth.LoginResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/login"
+            body: "*"
+        };
+    }
+    rpc RefreshToken (auth.RefreshTokenRequest) returns (auth.RefreshTokenResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/refresh"
+            body: "*"
+        };
+    }
+    rpc Logout (auth.LogoutRequest) returns (auth.LogoutResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/logout"
+            body: "*"
+        };
+    }
+
+    // UserInfo Service
+    rpc GetUserById (userinfo.GetUserByIdRequest) returns (userinfo.GetUserByIdResponse) {
+        option (google.api.http) = {
+            get: "/api/users/{id}"
+        };
+    }
+    rpc GetUserByEmail (userinfo.GetUserByEmailRequest) returns (userinfo.GetUserByEmailResponse) {
+        option (google.api.http) = {
+            get: "/api/users/email/{email}"
+        };
+    }
+    rpc UpdateUser (userinfo.UpdateUserRequest) returns (userinfo.UpdateUserResponse) {
+        option (google.api.http) = {
+            put: "/api/users/{id}"
+            body: "*"
+        };
+    }
+    rpc DeleteUser (userinfo.DeleteUserRequest) returns (userinfo.DeleteUserResponse) {
+        option (google.api.http) = {
+            delete: "/api/users/{id}"
+        };
+    }
+
+    // Campaign Tool Service
+    rpc CreateCampaign (campaign.CreateCampaignRequest) returns (campaign.CreateCampaignResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns"
+            body: "*"
+        };
+    }
+    rpc DeleteCampaign (campaign.DeleteCampaignRequest) returns (campaign.DeleteCampaignResponse) {
+        option (google.api.http) = {
+            delete: "/api/campaigns/{id}"
+        };
+    }
+    rpc GenerateInviteCode (campaign.GenerateInviteCodeRequest) returns (campaign.GenerateInviteCodeResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/{id}/invite-code"
+            body: "*"
+        };
+    }
+    rpc JoinCampaign (campaign.JoinCampaignRequest) returns (campaign.JoinCampaignResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/{id}/join"
+            body: "*"
+        };
+    }
+    rpc LeaveCampaign (campaign.LeaveCampaignRequest) returns (campaign.LeaveCampaignResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/{id}/leave"
+            body: "*"
+        };
+    }
+    rpc GetCreatedCampaigns (campaign.GetCreatedCampaignsRequest) returns (campaign.GetCreatedCampaignsResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/created"
+        };
+    }
+    rpc GetCurrentCampaigns (campaign.GetCurrentCampaignsRequest) returns (campaign.GetCurrentCampaignsResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/current"
+        };
+    }
+
+    // HealthCheck
+    rpc HealthCheck (auth.HealthCheckRequest) returns (auth.HealthCheckResponse) {
+        option (google.api.http) = {
+            get: "/health"
+        };
+    }
+}
