@@ -7,7 +7,7 @@ import "sso/auth.proto";
 import "sso/user_info.proto";
 import "campaign/campaign.proto";
 
-option go_package = "alsadx.api.v1;apiv1";
+option go_package = "github.com/alsadx/gm-protos/api/v1";
 
 service Gateway {
     // Auth Service

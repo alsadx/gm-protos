@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: campaign/campaign.proto
 
-package campaignv1
+package v1
 
 import (
 	context "context"

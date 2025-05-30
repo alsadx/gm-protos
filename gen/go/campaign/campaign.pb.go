@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: campaign/campaign.proto
 
-package campaignv1
+package v1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -908,7 +908,7 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\x12P\n" +
 	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\x12b\n" +
 	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\x12b\n" +
-	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponseB\x1fZ\x1dalsadx.campaign.v1;campaignv1b\x06proto3"
+	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponseB)Z'github.com/alsadx/gm-protos/campaign/v1b\x06proto3"
 
 var (
 	file_campaign_campaign_proto_rawDescOnce sync.Once

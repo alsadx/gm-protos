@@ -4,12 +4,12 @@
 // - protoc             v5.29.3
 // source: api/gateway.proto
 
-package apiv1
+package v1
 
 import (
-	alsadx_campaign_v1 "alsadx.campaign.v1"
-	alsadx_sso_v1 "alsadx.sso.v1"
 	context "context"
+	v11 "github.com/alsadx/gm-protos/campaign/v1"
+	v1 "github.com/alsadx/gm-protos/sso/v1"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -44,25 +44,25 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GatewayClient interface {
 	// Auth Service
-	Register(ctx context.Context, in *alsadx_sso_v1.RegisterRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.RegisterResponse, error)
-	Login(ctx context.Context, in *alsadx_sso_v1.LoginRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.LoginResponse, error)
-	RefreshToken(ctx context.Context, in *alsadx_sso_v1.RefreshTokenRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.RefreshTokenResponse, error)
-	Logout(ctx context.Context, in *alsadx_sso_v1.LogoutRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.LogoutResponse, error)
+	Register(ctx context.Context, in *v1.RegisterRequest, opts ...grpc.CallOption) (*v1.RegisterResponse, error)
+	Login(ctx context.Context, in *v1.LoginRequest, opts ...grpc.CallOption) (*v1.LoginResponse, error)
+	RefreshToken(ctx context.Context, in *v1.RefreshTokenRequest, opts ...grpc.CallOption) (*v1.RefreshTokenResponse, error)
+	Logout(ctx context.Context, in *v1.LogoutRequest, opts ...grpc.CallOption) (*v1.LogoutResponse, error)
 	// UserInfo Service
-	GetUserById(ctx context.Context, in *alsadx_sso_v1.GetUserByIdRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.GetUserByIdResponse, error)
-	GetUserByEmail(ctx context.Context, in *alsadx_sso_v1.GetUserByEmailRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.GetUserByEmailResponse, error)
-	UpdateUser(ctx context.Context, in *alsadx_sso_v1.UpdateUserRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.UpdateUserResponse, error)
-	DeleteUser(ctx context.Context, in *alsadx_sso_v1.DeleteUserRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.DeleteUserResponse, error)
+	GetUserById(ctx context.Context, in *v1.GetUserByIdRequest, opts ...grpc.CallOption) (*v1.GetUserByIdResponse, error)
+	GetUserByEmail(ctx context.Context, in *v1.GetUserByEmailRequest, opts ...grpc.CallOption) (*v1.GetUserByEmailResponse, error)
+	UpdateUser(ctx context.Context, in *v1.UpdateUserRequest, opts ...grpc.CallOption) (*v1.UpdateUserResponse, error)
+	DeleteUser(ctx context.Context, in *v1.DeleteUserRequest, opts ...grpc.CallOption) (*v1.DeleteUserResponse, error)
 	// Campaign Tool Service
-	CreateCampaign(ctx context.Context, in *alsadx_campaign_v1.CreateCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.CreateCampaignResponse, error)
-	DeleteCampaign(ctx context.Context, in *alsadx_campaign_v1.DeleteCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.DeleteCampaignResponse, error)
-	GenerateInviteCode(ctx context.Context, in *alsadx_campaign_v1.GenerateInviteCodeRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.GenerateInviteCodeResponse, error)
-	JoinCampaign(ctx context.Context, in *alsadx_campaign_v1.JoinCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.JoinCampaignResponse, error)
-	LeaveCampaign(ctx context.Context, in *alsadx_campaign_v1.LeaveCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.LeaveCampaignResponse, error)
-	GetCreatedCampaigns(ctx context.Context, in *alsadx_campaign_v1.GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.GetCreatedCampaignsResponse, error)
-	GetCurrentCampaigns(ctx context.Context, in *alsadx_campaign_v1.GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.GetCurrentCampaignsResponse, error)
+	CreateCampaign(ctx context.Context, in *v11.CreateCampaignRequest, opts ...grpc.CallOption) (*v11.CreateCampaignResponse, error)
+	DeleteCampaign(ctx context.Context, in *v11.DeleteCampaignRequest, opts ...grpc.CallOption) (*v11.DeleteCampaignResponse, error)
+	GenerateInviteCode(ctx context.Context, in *v11.GenerateInviteCodeRequest, opts ...grpc.CallOption) (*v11.GenerateInviteCodeResponse, error)
+	JoinCampaign(ctx context.Context, in *v11.JoinCampaignRequest, opts ...grpc.CallOption) (*v11.JoinCampaignResponse, error)
+	LeaveCampaign(ctx context.Context, in *v11.LeaveCampaignRequest, opts ...grpc.CallOption) (*v11.LeaveCampaignResponse, error)
+	GetCreatedCampaigns(ctx context.Context, in *v11.GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*v11.GetCreatedCampaignsResponse, error)
+	GetCurrentCampaigns(ctx context.Context, in *v11.GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*v11.GetCurrentCampaignsResponse, error)
 	// HealthCheck
-	HealthCheck(ctx context.Context, in *alsadx_sso_v1.HealthCheckRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.HealthCheckResponse, error)
+	HealthCheck(ctx context.Context, in *v1.HealthCheckRequest, opts ...grpc.CallOption) (*v1.HealthCheckResponse, error)
 }
 
 type gatewayClient struct {
@@ -73,9 +73,9 @@ func NewGatewayClient(cc grpc.ClientConnInterface) GatewayClient {
 	return &gatewayClient{cc}
 }
 
-func (c *gatewayClient) Register(ctx context.Context, in *alsadx_sso_v1.RegisterRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.RegisterResponse, error) {
+func (c *gatewayClient) Register(ctx context.Context, in *v1.RegisterRequest, opts ...grpc.CallOption) (*v1.RegisterResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.RegisterResponse)
+	out := new(v1.RegisterResponse)
 	err := c.cc.Invoke(ctx, Gateway_Register_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -83,9 +83,9 @@ func (c *gatewayClient) Register(ctx context.Context, in *alsadx_sso_v1.Register
 	return out, nil
 }
 
-func (c *gatewayClient) Login(ctx context.Context, in *alsadx_sso_v1.LoginRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.LoginResponse, error) {
+func (c *gatewayClient) Login(ctx context.Context, in *v1.LoginRequest, opts ...grpc.CallOption) (*v1.LoginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.LoginResponse)
+	out := new(v1.LoginResponse)
 	err := c.cc.Invoke(ctx, Gateway_Login_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -93,9 +93,9 @@ func (c *gatewayClient) Login(ctx context.Context, in *alsadx_sso_v1.LoginReques
 	return out, nil
 }
 
-func (c *gatewayClient) RefreshToken(ctx context.Context, in *alsadx_sso_v1.RefreshTokenRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.RefreshTokenResponse, error) {
+func (c *gatewayClient) RefreshToken(ctx context.Context, in *v1.RefreshTokenRequest, opts ...grpc.CallOption) (*v1.RefreshTokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.RefreshTokenResponse)
+	out := new(v1.RefreshTokenResponse)
 	err := c.cc.Invoke(ctx, Gateway_RefreshToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -103,9 +103,9 @@ func (c *gatewayClient) RefreshToken(ctx context.Context, in *alsadx_sso_v1.Refr
 	return out, nil
 }
 
-func (c *gatewayClient) Logout(ctx context.Context, in *alsadx_sso_v1.LogoutRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.LogoutResponse, error) {
+func (c *gatewayClient) Logout(ctx context.Context, in *v1.LogoutRequest, opts ...grpc.CallOption) (*v1.LogoutResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.LogoutResponse)
+	out := new(v1.LogoutResponse)
 	err := c.cc.Invoke(ctx, Gateway_Logout_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -113,9 +113,9 @@ func (c *gatewayClient) Logout(ctx context.Context, in *alsadx_sso_v1.LogoutRequ
 	return out, nil
 }
 
-func (c *gatewayClient) GetUserById(ctx context.Context, in *alsadx_sso_v1.GetUserByIdRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.GetUserByIdResponse, error) {
+func (c *gatewayClient) GetUserById(ctx context.Context, in *v1.GetUserByIdRequest, opts ...grpc.CallOption) (*v1.GetUserByIdResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.GetUserByIdResponse)
+	out := new(v1.GetUserByIdResponse)
 	err := c.cc.Invoke(ctx, Gateway_GetUserById_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -123,9 +123,9 @@ func (c *gatewayClient) GetUserById(ctx context.Context, in *alsadx_sso_v1.GetUs
 	return out, nil
 }
 
-func (c *gatewayClient) GetUserByEmail(ctx context.Context, in *alsadx_sso_v1.GetUserByEmailRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.GetUserByEmailResponse, error) {
+func (c *gatewayClient) GetUserByEmail(ctx context.Context, in *v1.GetUserByEmailRequest, opts ...grpc.CallOption) (*v1.GetUserByEmailResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.GetUserByEmailResponse)
+	out := new(v1.GetUserByEmailResponse)
 	err := c.cc.Invoke(ctx, Gateway_GetUserByEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -133,9 +133,9 @@ func (c *gatewayClient) GetUserByEmail(ctx context.Context, in *alsadx_sso_v1.Ge
 	return out, nil
 }
 
-func (c *gatewayClient) UpdateUser(ctx context.Context, in *alsadx_sso_v1.UpdateUserRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.UpdateUserResponse, error) {
+func (c *gatewayClient) UpdateUser(ctx context.Context, in *v1.UpdateUserRequest, opts ...grpc.CallOption) (*v1.UpdateUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.UpdateUserResponse)
+	out := new(v1.UpdateUserResponse)
 	err := c.cc.Invoke(ctx, Gateway_UpdateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -143,9 +143,9 @@ func (c *gatewayClient) UpdateUser(ctx context.Context, in *alsadx_sso_v1.Update
 	return out, nil
 }
 
-func (c *gatewayClient) DeleteUser(ctx context.Context, in *alsadx_sso_v1.DeleteUserRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.DeleteUserResponse, error) {
+func (c *gatewayClient) DeleteUser(ctx context.Context, in *v1.DeleteUserRequest, opts ...grpc.CallOption) (*v1.DeleteUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.DeleteUserResponse)
+	out := new(v1.DeleteUserResponse)
 	err := c.cc.Invoke(ctx, Gateway_DeleteUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -153,9 +153,9 @@ func (c *gatewayClient) DeleteUser(ctx context.Context, in *alsadx_sso_v1.Delete
 	return out, nil
 }
 
-func (c *gatewayClient) CreateCampaign(ctx context.Context, in *alsadx_campaign_v1.CreateCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.CreateCampaignResponse, error) {
+func (c *gatewayClient) CreateCampaign(ctx context.Context, in *v11.CreateCampaignRequest, opts ...grpc.CallOption) (*v11.CreateCampaignResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.CreateCampaignResponse)
+	out := new(v11.CreateCampaignResponse)
 	err := c.cc.Invoke(ctx, Gateway_CreateCampaign_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -163,9 +163,9 @@ func (c *gatewayClient) CreateCampaign(ctx context.Context, in *alsadx_campaign_
 	return out, nil
 }
 
-func (c *gatewayClient) DeleteCampaign(ctx context.Context, in *alsadx_campaign_v1.DeleteCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.DeleteCampaignResponse, error) {
+func (c *gatewayClient) DeleteCampaign(ctx context.Context, in *v11.DeleteCampaignRequest, opts ...grpc.CallOption) (*v11.DeleteCampaignResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.DeleteCampaignResponse)
+	out := new(v11.DeleteCampaignResponse)
 	err := c.cc.Invoke(ctx, Gateway_DeleteCampaign_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -173,9 +173,9 @@ func (c *gatewayClient) DeleteCampaign(ctx context.Context, in *alsadx_campaign_
 	return out, nil
 }
 
-func (c *gatewayClient) GenerateInviteCode(ctx context.Context, in *alsadx_campaign_v1.GenerateInviteCodeRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.GenerateInviteCodeResponse, error) {
+func (c *gatewayClient) GenerateInviteCode(ctx context.Context, in *v11.GenerateInviteCodeRequest, opts ...grpc.CallOption) (*v11.GenerateInviteCodeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.GenerateInviteCodeResponse)
+	out := new(v11.GenerateInviteCodeResponse)
 	err := c.cc.Invoke(ctx, Gateway_GenerateInviteCode_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -183,9 +183,9 @@ func (c *gatewayClient) GenerateInviteCode(ctx context.Context, in *alsadx_campa
 	return out, nil
 }
 
-func (c *gatewayClient) JoinCampaign(ctx context.Context, in *alsadx_campaign_v1.JoinCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.JoinCampaignResponse, error) {
+func (c *gatewayClient) JoinCampaign(ctx context.Context, in *v11.JoinCampaignRequest, opts ...grpc.CallOption) (*v11.JoinCampaignResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.JoinCampaignResponse)
+	out := new(v11.JoinCampaignResponse)
 	err := c.cc.Invoke(ctx, Gateway_JoinCampaign_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -193,9 +193,9 @@ func (c *gatewayClient) JoinCampaign(ctx context.Context, in *alsadx_campaign_v1
 	return out, nil
 }
 
-func (c *gatewayClient) LeaveCampaign(ctx context.Context, in *alsadx_campaign_v1.LeaveCampaignRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.LeaveCampaignResponse, error) {
+func (c *gatewayClient) LeaveCampaign(ctx context.Context, in *v11.LeaveCampaignRequest, opts ...grpc.CallOption) (*v11.LeaveCampaignResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.LeaveCampaignResponse)
+	out := new(v11.LeaveCampaignResponse)
 	err := c.cc.Invoke(ctx, Gateway_LeaveCampaign_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -203,9 +203,9 @@ func (c *gatewayClient) LeaveCampaign(ctx context.Context, in *alsadx_campaign_v
 	return out, nil
 }
 
-func (c *gatewayClient) GetCreatedCampaigns(ctx context.Context, in *alsadx_campaign_v1.GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.GetCreatedCampaignsResponse, error) {
+func (c *gatewayClient) GetCreatedCampaigns(ctx context.Context, in *v11.GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*v11.GetCreatedCampaignsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.GetCreatedCampaignsResponse)
+	out := new(v11.GetCreatedCampaignsResponse)
 	err := c.cc.Invoke(ctx, Gateway_GetCreatedCampaigns_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -213,9 +213,9 @@ func (c *gatewayClient) GetCreatedCampaigns(ctx context.Context, in *alsadx_camp
 	return out, nil
 }
 
-func (c *gatewayClient) GetCurrentCampaigns(ctx context.Context, in *alsadx_campaign_v1.GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*alsadx_campaign_v1.GetCurrentCampaignsResponse, error) {
+func (c *gatewayClient) GetCurrentCampaigns(ctx context.Context, in *v11.GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*v11.GetCurrentCampaignsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_campaign_v1.GetCurrentCampaignsResponse)
+	out := new(v11.GetCurrentCampaignsResponse)
 	err := c.cc.Invoke(ctx, Gateway_GetCurrentCampaigns_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -223,9 +223,9 @@ func (c *gatewayClient) GetCurrentCampaigns(ctx context.Context, in *alsadx_camp
 	return out, nil
 }
 
-func (c *gatewayClient) HealthCheck(ctx context.Context, in *alsadx_sso_v1.HealthCheckRequest, opts ...grpc.CallOption) (*alsadx_sso_v1.HealthCheckResponse, error) {
+func (c *gatewayClient) HealthCheck(ctx context.Context, in *v1.HealthCheckRequest, opts ...grpc.CallOption) (*v1.HealthCheckResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(alsadx_sso_v1.HealthCheckResponse)
+	out := new(v1.HealthCheckResponse)
 	err := c.cc.Invoke(ctx, Gateway_HealthCheck_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -238,25 +238,25 @@ func (c *gatewayClient) HealthCheck(ctx context.Context, in *alsadx_sso_v1.Healt
 // for forward compatibility.
 type GatewayServer interface {
 	// Auth Service
-	Register(context.Context, *alsadx_sso_v1.RegisterRequest) (*alsadx_sso_v1.RegisterResponse, error)
-	Login(context.Context, *alsadx_sso_v1.LoginRequest) (*alsadx_sso_v1.LoginResponse, error)
-	RefreshToken(context.Context, *alsadx_sso_v1.RefreshTokenRequest) (*alsadx_sso_v1.RefreshTokenResponse, error)
-	Logout(context.Context, *alsadx_sso_v1.LogoutRequest) (*alsadx_sso_v1.LogoutResponse, error)
+	Register(context.Context, *v1.RegisterRequest) (*v1.RegisterResponse, error)
+	Login(context.Context, *v1.LoginRequest) (*v1.LoginResponse, error)
+	RefreshToken(context.Context, *v1.RefreshTokenRequest) (*v1.RefreshTokenResponse, error)
+	Logout(context.Context, *v1.LogoutRequest) (*v1.LogoutResponse, error)
 	// UserInfo Service
-	GetUserById(context.Context, *alsadx_sso_v1.GetUserByIdRequest) (*alsadx_sso_v1.GetUserByIdResponse, error)
-	GetUserByEmail(context.Context, *alsadx_sso_v1.GetUserByEmailRequest) (*alsadx_sso_v1.GetUserByEmailResponse, error)
-	UpdateUser(context.Context, *alsadx_sso_v1.UpdateUserRequest) (*alsadx_sso_v1.UpdateUserResponse, error)
-	DeleteUser(context.Context, *alsadx_sso_v1.DeleteUserRequest) (*alsadx_sso_v1.DeleteUserResponse, error)
+	GetUserById(context.Context, *v1.GetUserByIdRequest) (*v1.GetUserByIdResponse, error)
+	GetUserByEmail(context.Context, *v1.GetUserByEmailRequest) (*v1.GetUserByEmailResponse, error)
+	UpdateUser(context.Context, *v1.UpdateUserRequest) (*v1.UpdateUserResponse, error)
+	DeleteUser(context.Context, *v1.DeleteUserRequest) (*v1.DeleteUserResponse, error)
 	// Campaign Tool Service
-	CreateCampaign(context.Context, *alsadx_campaign_v1.CreateCampaignRequest) (*alsadx_campaign_v1.CreateCampaignResponse, error)
-	DeleteCampaign(context.Context, *alsadx_campaign_v1.DeleteCampaignRequest) (*alsadx_campaign_v1.DeleteCampaignResponse, error)
-	GenerateInviteCode(context.Context, *alsadx_campaign_v1.GenerateInviteCodeRequest) (*alsadx_campaign_v1.GenerateInviteCodeResponse, error)
-	JoinCampaign(context.Context, *alsadx_campaign_v1.JoinCampaignRequest) (*alsadx_campaign_v1.JoinCampaignResponse, error)
-	LeaveCampaign(context.Context, *alsadx_campaign_v1.LeaveCampaignRequest) (*alsadx_campaign_v1.LeaveCampaignResponse, error)
-	GetCreatedCampaigns(context.Context, *alsadx_campaign_v1.GetCreatedCampaignsRequest) (*alsadx_campaign_v1.GetCreatedCampaignsResponse, error)
-	GetCurrentCampaigns(context.Context, *alsadx_campaign_v1.GetCurrentCampaignsRequest) (*alsadx_campaign_v1.GetCurrentCampaignsResponse, error)
+	CreateCampaign(context.Context, *v11.CreateCampaignRequest) (*v11.CreateCampaignResponse, error)
+	DeleteCampaign(context.Context, *v11.DeleteCampaignRequest) (*v11.DeleteCampaignResponse, error)
+	GenerateInviteCode(context.Context, *v11.GenerateInviteCodeRequest) (*v11.GenerateInviteCodeResponse, error)
+	JoinCampaign(context.Context, *v11.JoinCampaignRequest) (*v11.JoinCampaignResponse, error)
+	LeaveCampaign(context.Context, *v11.LeaveCampaignRequest) (*v11.LeaveCampaignResponse, error)
+	GetCreatedCampaigns(context.Context, *v11.GetCreatedCampaignsRequest) (*v11.GetCreatedCampaignsResponse, error)
+	GetCurrentCampaigns(context.Context, *v11.GetCurrentCampaignsRequest) (*v11.GetCurrentCampaignsResponse, error)
 	// HealthCheck
-	HealthCheck(context.Context, *alsadx_sso_v1.HealthCheckRequest) (*alsadx_sso_v1.HealthCheckResponse, error)
+	HealthCheck(context.Context, *v1.HealthCheckRequest) (*v1.HealthCheckResponse, error)
 	mustEmbedUnimplementedGatewayServer()
 }
 
@@ -267,52 +267,52 @@ type GatewayServer interface {
 // pointer dereference when methods are called.
 type UnimplementedGatewayServer struct{}
 
-func (UnimplementedGatewayServer) Register(context.Context, *alsadx_sso_v1.RegisterRequest) (*alsadx_sso_v1.RegisterResponse, error) {
+func (UnimplementedGatewayServer) Register(context.Context, *v1.RegisterRequest) (*v1.RegisterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedGatewayServer) Login(context.Context, *alsadx_sso_v1.LoginRequest) (*alsadx_sso_v1.LoginResponse, error) {
+func (UnimplementedGatewayServer) Login(context.Context, *v1.LoginRequest) (*v1.LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedGatewayServer) RefreshToken(context.Context, *alsadx_sso_v1.RefreshTokenRequest) (*alsadx_sso_v1.RefreshTokenResponse, error) {
+func (UnimplementedGatewayServer) RefreshToken(context.Context, *v1.RefreshTokenRequest) (*v1.RefreshTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
 }
-func (UnimplementedGatewayServer) Logout(context.Context, *alsadx_sso_v1.LogoutRequest) (*alsadx_sso_v1.LogoutResponse, error) {
+func (UnimplementedGatewayServer) Logout(context.Context, *v1.LogoutRequest) (*v1.LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
-func (UnimplementedGatewayServer) GetUserById(context.Context, *alsadx_sso_v1.GetUserByIdRequest) (*alsadx_sso_v1.GetUserByIdResponse, error) {
+func (UnimplementedGatewayServer) GetUserById(context.Context, *v1.GetUserByIdRequest) (*v1.GetUserByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserById not implemented")
 }
-func (UnimplementedGatewayServer) GetUserByEmail(context.Context, *alsadx_sso_v1.GetUserByEmailRequest) (*alsadx_sso_v1.GetUserByEmailResponse, error) {
+func (UnimplementedGatewayServer) GetUserByEmail(context.Context, *v1.GetUserByEmailRequest) (*v1.GetUserByEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByEmail not implemented")
 }
-func (UnimplementedGatewayServer) UpdateUser(context.Context, *alsadx_sso_v1.UpdateUserRequest) (*alsadx_sso_v1.UpdateUserResponse, error) {
+func (UnimplementedGatewayServer) UpdateUser(context.Context, *v1.UpdateUserRequest) (*v1.UpdateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
 }
-func (UnimplementedGatewayServer) DeleteUser(context.Context, *alsadx_sso_v1.DeleteUserRequest) (*alsadx_sso_v1.DeleteUserResponse, error) {
+func (UnimplementedGatewayServer) DeleteUser(context.Context, *v1.DeleteUserRequest) (*v1.DeleteUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
 }
-func (UnimplementedGatewayServer) CreateCampaign(context.Context, *alsadx_campaign_v1.CreateCampaignRequest) (*alsadx_campaign_v1.CreateCampaignResponse, error) {
+func (UnimplementedGatewayServer) CreateCampaign(context.Context, *v11.CreateCampaignRequest) (*v11.CreateCampaignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateCampaign not implemented")
 }
-func (UnimplementedGatewayServer) DeleteCampaign(context.Context, *alsadx_campaign_v1.DeleteCampaignRequest) (*alsadx_campaign_v1.DeleteCampaignResponse, error) {
+func (UnimplementedGatewayServer) DeleteCampaign(context.Context, *v11.DeleteCampaignRequest) (*v11.DeleteCampaignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCampaign not implemented")
 }
-func (UnimplementedGatewayServer) GenerateInviteCode(context.Context, *alsadx_campaign_v1.GenerateInviteCodeRequest) (*alsadx_campaign_v1.GenerateInviteCodeResponse, error) {
+func (UnimplementedGatewayServer) GenerateInviteCode(context.Context, *v11.GenerateInviteCodeRequest) (*v11.GenerateInviteCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateInviteCode not implemented")
 }
-func (UnimplementedGatewayServer) JoinCampaign(context.Context, *alsadx_campaign_v1.JoinCampaignRequest) (*alsadx_campaign_v1.JoinCampaignResponse, error) {
+func (UnimplementedGatewayServer) JoinCampaign(context.Context, *v11.JoinCampaignRequest) (*v11.JoinCampaignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method JoinCampaign not implemented")
 }
-func (UnimplementedGatewayServer) LeaveCampaign(context.Context, *alsadx_campaign_v1.LeaveCampaignRequest) (*alsadx_campaign_v1.LeaveCampaignResponse, error) {
+func (UnimplementedGatewayServer) LeaveCampaign(context.Context, *v11.LeaveCampaignRequest) (*v11.LeaveCampaignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaveCampaign not implemented")
 }
-func (UnimplementedGatewayServer) GetCreatedCampaigns(context.Context, *alsadx_campaign_v1.GetCreatedCampaignsRequest) (*alsadx_campaign_v1.GetCreatedCampaignsResponse, error) {
+func (UnimplementedGatewayServer) GetCreatedCampaigns(context.Context, *v11.GetCreatedCampaignsRequest) (*v11.GetCreatedCampaignsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCreatedCampaigns not implemented")
 }
-func (UnimplementedGatewayServer) GetCurrentCampaigns(context.Context, *alsadx_campaign_v1.GetCurrentCampaignsRequest) (*alsadx_campaign_v1.GetCurrentCampaignsResponse, error) {
+func (UnimplementedGatewayServer) GetCurrentCampaigns(context.Context, *v11.GetCurrentCampaignsRequest) (*v11.GetCurrentCampaignsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCurrentCampaigns not implemented")
 }
-func (UnimplementedGatewayServer) HealthCheck(context.Context, *alsadx_sso_v1.HealthCheckRequest) (*alsadx_sso_v1.HealthCheckResponse, error) {
+func (UnimplementedGatewayServer) HealthCheck(context.Context, *v1.HealthCheckRequest) (*v1.HealthCheckResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HealthCheck not implemented")
 }
 func (UnimplementedGatewayServer) mustEmbedUnimplementedGatewayServer() {}
@@ -337,7 +337,7 @@ func RegisterGatewayServer(s grpc.ServiceRegistrar, srv GatewayServer) {
 }
 
 func _Gateway_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.RegisterRequest)
+	in := new(v1.RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -349,13 +349,13 @@ func _Gateway_Register_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: Gateway_Register_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).Register(ctx, req.(*alsadx_sso_v1.RegisterRequest))
+		return srv.(GatewayServer).Register(ctx, req.(*v1.RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.LoginRequest)
+	in := new(v1.LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -367,13 +367,13 @@ func _Gateway_Login_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: Gateway_Login_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).Login(ctx, req.(*alsadx_sso_v1.LoginRequest))
+		return srv.(GatewayServer).Login(ctx, req.(*v1.LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_RefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.RefreshTokenRequest)
+	in := new(v1.RefreshTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -385,13 +385,13 @@ func _Gateway_RefreshToken_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: Gateway_RefreshToken_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).RefreshToken(ctx, req.(*alsadx_sso_v1.RefreshTokenRequest))
+		return srv.(GatewayServer).RefreshToken(ctx, req.(*v1.RefreshTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.LogoutRequest)
+	in := new(v1.LogoutRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -403,13 +403,13 @@ func _Gateway_Logout_Handler(srv interface{}, ctx context.Context, dec func(inte
 		FullMethod: Gateway_Logout_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).Logout(ctx, req.(*alsadx_sso_v1.LogoutRequest))
+		return srv.(GatewayServer).Logout(ctx, req.(*v1.LogoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_GetUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.GetUserByIdRequest)
+	in := new(v1.GetUserByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -421,13 +421,13 @@ func _Gateway_GetUserById_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: Gateway_GetUserById_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).GetUserById(ctx, req.(*alsadx_sso_v1.GetUserByIdRequest))
+		return srv.(GatewayServer).GetUserById(ctx, req.(*v1.GetUserByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.GetUserByEmailRequest)
+	in := new(v1.GetUserByEmailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -439,13 +439,13 @@ func _Gateway_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: Gateway_GetUserByEmail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).GetUserByEmail(ctx, req.(*alsadx_sso_v1.GetUserByEmailRequest))
+		return srv.(GatewayServer).GetUserByEmail(ctx, req.(*v1.GetUserByEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.UpdateUserRequest)
+	in := new(v1.UpdateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -457,13 +457,13 @@ func _Gateway_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: Gateway_UpdateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).UpdateUser(ctx, req.(*alsadx_sso_v1.UpdateUserRequest))
+		return srv.(GatewayServer).UpdateUser(ctx, req.(*v1.UpdateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.DeleteUserRequest)
+	in := new(v1.DeleteUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -475,13 +475,13 @@ func _Gateway_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: Gateway_DeleteUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).DeleteUser(ctx, req.(*alsadx_sso_v1.DeleteUserRequest))
+		return srv.(GatewayServer).DeleteUser(ctx, req.(*v1.DeleteUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_CreateCampaign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.CreateCampaignRequest)
+	in := new(v11.CreateCampaignRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -493,13 +493,13 @@ func _Gateway_CreateCampaign_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: Gateway_CreateCampaign_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).CreateCampaign(ctx, req.(*alsadx_campaign_v1.CreateCampaignRequest))
+		return srv.(GatewayServer).CreateCampaign(ctx, req.(*v11.CreateCampaignRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_DeleteCampaign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.DeleteCampaignRequest)
+	in := new(v11.DeleteCampaignRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -511,13 +511,13 @@ func _Gateway_DeleteCampaign_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: Gateway_DeleteCampaign_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).DeleteCampaign(ctx, req.(*alsadx_campaign_v1.DeleteCampaignRequest))
+		return srv.(GatewayServer).DeleteCampaign(ctx, req.(*v11.DeleteCampaignRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_GenerateInviteCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.GenerateInviteCodeRequest)
+	in := new(v11.GenerateInviteCodeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -529,13 +529,13 @@ func _Gateway_GenerateInviteCode_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: Gateway_GenerateInviteCode_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).GenerateInviteCode(ctx, req.(*alsadx_campaign_v1.GenerateInviteCodeRequest))
+		return srv.(GatewayServer).GenerateInviteCode(ctx, req.(*v11.GenerateInviteCodeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_JoinCampaign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.JoinCampaignRequest)
+	in := new(v11.JoinCampaignRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -547,13 +547,13 @@ func _Gateway_JoinCampaign_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: Gateway_JoinCampaign_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).JoinCampaign(ctx, req.(*alsadx_campaign_v1.JoinCampaignRequest))
+		return srv.(GatewayServer).JoinCampaign(ctx, req.(*v11.JoinCampaignRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_LeaveCampaign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.LeaveCampaignRequest)
+	in := new(v11.LeaveCampaignRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -565,13 +565,13 @@ func _Gateway_LeaveCampaign_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: Gateway_LeaveCampaign_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).LeaveCampaign(ctx, req.(*alsadx_campaign_v1.LeaveCampaignRequest))
+		return srv.(GatewayServer).LeaveCampaign(ctx, req.(*v11.LeaveCampaignRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_GetCreatedCampaigns_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.GetCreatedCampaignsRequest)
+	in := new(v11.GetCreatedCampaignsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -583,13 +583,13 @@ func _Gateway_GetCreatedCampaigns_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: Gateway_GetCreatedCampaigns_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).GetCreatedCampaigns(ctx, req.(*alsadx_campaign_v1.GetCreatedCampaignsRequest))
+		return srv.(GatewayServer).GetCreatedCampaigns(ctx, req.(*v11.GetCreatedCampaignsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_GetCurrentCampaigns_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_campaign_v1.GetCurrentCampaignsRequest)
+	in := new(v11.GetCurrentCampaignsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -601,13 +601,13 @@ func _Gateway_GetCurrentCampaigns_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: Gateway_GetCurrentCampaigns_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).GetCurrentCampaigns(ctx, req.(*alsadx_campaign_v1.GetCurrentCampaignsRequest))
+		return srv.(GatewayServer).GetCurrentCampaigns(ctx, req.(*v11.GetCurrentCampaignsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Gateway_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(alsadx_sso_v1.HealthCheckRequest)
+	in := new(v1.HealthCheckRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -619,7 +619,7 @@ func _Gateway_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: Gateway_HealthCheck_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GatewayServer).HealthCheck(ctx, req.(*alsadx_sso_v1.HealthCheckRequest))
+		return srv.(GatewayServer).HealthCheck(ctx, req.(*v1.HealthCheckRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

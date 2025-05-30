@@ -4,11 +4,11 @@
 // 	protoc        v5.29.3
 // source: api/gateway.proto
 
-package apiv1
+package v1
 
 import (
-	alsadx_campaign_v1 "alsadx.campaign.v1"
-	alsadx_sso_v1 "alsadx.sso.v1"
+	v11 "github.com/alsadx/gm-protos/campaign/v1"
+	v1 "github.com/alsadx/gm-protos/sso/v1"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -46,41 +46,41 @@ const file_api_gateway_proto_rawDesc = "" +
 	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e:\x01*\"\x19/api/campaigns/{id}/leave\x12\x82\x01\n" +
 	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/created\x12\x82\x01\n" +
 	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/current\x12S\n" +
-	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponse\"\x0f\x82\xd3\xe4\x93\x02\t\x12\a/healthB\x15Z\x13alsadx.api.v1;apiv1b\x06proto3"
+	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponse\"\x0f\x82\xd3\xe4\x93\x02\t\x12\a/healthB$Z\"github.com/alsadx/gm-protos/api/v1b\x06proto3"
 
 var file_api_gateway_proto_goTypes = []any{
-	(*alsadx_sso_v1.RegisterRequest)(nil),                  // 0: auth.RegisterRequest
-	(*alsadx_sso_v1.LoginRequest)(nil),                     // 1: auth.LoginRequest
-	(*alsadx_sso_v1.RefreshTokenRequest)(nil),              // 2: auth.RefreshTokenRequest
-	(*alsadx_sso_v1.LogoutRequest)(nil),                    // 3: auth.LogoutRequest
-	(*alsadx_sso_v1.GetUserByIdRequest)(nil),               // 4: userinfo.GetUserByIdRequest
-	(*alsadx_sso_v1.GetUserByEmailRequest)(nil),            // 5: userinfo.GetUserByEmailRequest
-	(*alsadx_sso_v1.UpdateUserRequest)(nil),                // 6: userinfo.UpdateUserRequest
-	(*alsadx_sso_v1.DeleteUserRequest)(nil),                // 7: userinfo.DeleteUserRequest
-	(*alsadx_campaign_v1.CreateCampaignRequest)(nil),       // 8: campaign.CreateCampaignRequest
-	(*alsadx_campaign_v1.DeleteCampaignRequest)(nil),       // 9: campaign.DeleteCampaignRequest
-	(*alsadx_campaign_v1.GenerateInviteCodeRequest)(nil),   // 10: campaign.GenerateInviteCodeRequest
-	(*alsadx_campaign_v1.JoinCampaignRequest)(nil),         // 11: campaign.JoinCampaignRequest
-	(*alsadx_campaign_v1.LeaveCampaignRequest)(nil),        // 12: campaign.LeaveCampaignRequest
-	(*alsadx_campaign_v1.GetCreatedCampaignsRequest)(nil),  // 13: campaign.GetCreatedCampaignsRequest
-	(*alsadx_campaign_v1.GetCurrentCampaignsRequest)(nil),  // 14: campaign.GetCurrentCampaignsRequest
-	(*alsadx_sso_v1.HealthCheckRequest)(nil),               // 15: auth.HealthCheckRequest
-	(*alsadx_sso_v1.RegisterResponse)(nil),                 // 16: auth.RegisterResponse
-	(*alsadx_sso_v1.LoginResponse)(nil),                    // 17: auth.LoginResponse
-	(*alsadx_sso_v1.RefreshTokenResponse)(nil),             // 18: auth.RefreshTokenResponse
-	(*alsadx_sso_v1.LogoutResponse)(nil),                   // 19: auth.LogoutResponse
-	(*alsadx_sso_v1.GetUserByIdResponse)(nil),              // 20: userinfo.GetUserByIdResponse
-	(*alsadx_sso_v1.GetUserByEmailResponse)(nil),           // 21: userinfo.GetUserByEmailResponse
-	(*alsadx_sso_v1.UpdateUserResponse)(nil),               // 22: userinfo.UpdateUserResponse
-	(*alsadx_sso_v1.DeleteUserResponse)(nil),               // 23: userinfo.DeleteUserResponse
-	(*alsadx_campaign_v1.CreateCampaignResponse)(nil),      // 24: campaign.CreateCampaignResponse
-	(*alsadx_campaign_v1.DeleteCampaignResponse)(nil),      // 25: campaign.DeleteCampaignResponse
-	(*alsadx_campaign_v1.GenerateInviteCodeResponse)(nil),  // 26: campaign.GenerateInviteCodeResponse
-	(*alsadx_campaign_v1.JoinCampaignResponse)(nil),        // 27: campaign.JoinCampaignResponse
-	(*alsadx_campaign_v1.LeaveCampaignResponse)(nil),       // 28: campaign.LeaveCampaignResponse
-	(*alsadx_campaign_v1.GetCreatedCampaignsResponse)(nil), // 29: campaign.GetCreatedCampaignsResponse
-	(*alsadx_campaign_v1.GetCurrentCampaignsResponse)(nil), // 30: campaign.GetCurrentCampaignsResponse
-	(*alsadx_sso_v1.HealthCheckResponse)(nil),              // 31: auth.HealthCheckResponse
+	(*v1.RegisterRequest)(nil),              // 0: auth.RegisterRequest
+	(*v1.LoginRequest)(nil),                 // 1: auth.LoginRequest
+	(*v1.RefreshTokenRequest)(nil),          // 2: auth.RefreshTokenRequest
+	(*v1.LogoutRequest)(nil),                // 3: auth.LogoutRequest
+	(*v1.GetUserByIdRequest)(nil),           // 4: userinfo.GetUserByIdRequest
+	(*v1.GetUserByEmailRequest)(nil),        // 5: userinfo.GetUserByEmailRequest
+	(*v1.UpdateUserRequest)(nil),            // 6: userinfo.UpdateUserRequest
+	(*v1.DeleteUserRequest)(nil),            // 7: userinfo.DeleteUserRequest
+	(*v11.CreateCampaignRequest)(nil),       // 8: campaign.CreateCampaignRequest
+	(*v11.DeleteCampaignRequest)(nil),       // 9: campaign.DeleteCampaignRequest
+	(*v11.GenerateInviteCodeRequest)(nil),   // 10: campaign.GenerateInviteCodeRequest
+	(*v11.JoinCampaignRequest)(nil),         // 11: campaign.JoinCampaignRequest
+	(*v11.LeaveCampaignRequest)(nil),        // 12: campaign.LeaveCampaignRequest
+	(*v11.GetCreatedCampaignsRequest)(nil),  // 13: campaign.GetCreatedCampaignsRequest
+	(*v11.GetCurrentCampaignsRequest)(nil),  // 14: campaign.GetCurrentCampaignsRequest
+	(*v1.HealthCheckRequest)(nil),           // 15: auth.HealthCheckRequest
+	(*v1.RegisterResponse)(nil),             // 16: auth.RegisterResponse
+	(*v1.LoginResponse)(nil),                // 17: auth.LoginResponse
+	(*v1.RefreshTokenResponse)(nil),         // 18: auth.RefreshTokenResponse
+	(*v1.LogoutResponse)(nil),               // 19: auth.LogoutResponse
+	(*v1.GetUserByIdResponse)(nil),          // 20: userinfo.GetUserByIdResponse
+	(*v1.GetUserByEmailResponse)(nil),       // 21: userinfo.GetUserByEmailResponse
+	(*v1.UpdateUserResponse)(nil),           // 22: userinfo.UpdateUserResponse
+	(*v1.DeleteUserResponse)(nil),           // 23: userinfo.DeleteUserResponse
+	(*v11.CreateCampaignResponse)(nil),      // 24: campaign.CreateCampaignResponse
+	(*v11.DeleteCampaignResponse)(nil),      // 25: campaign.DeleteCampaignResponse
+	(*v11.GenerateInviteCodeResponse)(nil),  // 26: campaign.GenerateInviteCodeResponse
+	(*v11.JoinCampaignResponse)(nil),        // 27: campaign.JoinCampaignResponse
+	(*v11.LeaveCampaignResponse)(nil),       // 28: campaign.LeaveCampaignResponse
+	(*v11.GetCreatedCampaignsResponse)(nil), // 29: campaign.GetCreatedCampaignsResponse
+	(*v11.GetCurrentCampaignsResponse)(nil), // 30: campaign.GetCurrentCampaignsResponse
+	(*v1.HealthCheckResponse)(nil),          // 31: auth.HealthCheckResponse
 }
 var file_api_gateway_proto_depIdxs = []int32{
 	0,  // 0: gateway.Gateway.Register:input_type -> auth.RegisterRequest

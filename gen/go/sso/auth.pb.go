@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: sso/auth.proto
 
-package ssov1
+package v1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -674,7 +674,7 @@ const file_sso_auth_proto_rawDesc = "" +
 	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\x12E\n" +
 	"\fRefreshToken\x12\x19.auth.RefreshTokenRequest\x1a\x1a.auth.RefreshTokenResponse\x123\n" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12B\n" +
-	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponseB\x15Z\x13alsadx.sso.v1;ssov1b\x06proto3"
+	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponseB$Z\"github.com/alsadx/gm-protos/sso/v1b\x06proto3"
 
 var (
 	file_sso_auth_proto_rawDescOnce sync.Once
