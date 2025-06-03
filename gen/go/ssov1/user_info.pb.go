@@ -498,12 +498,12 @@ const file_sso_user_info_proto_rawDesc = "" +
 	"\x11DeleteUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb9\x03\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xbc\x03\n" +
 	"\bUserInfo\x12h\n" +
 	"\vGetUserById\x12\x1c.userinfo.GetUserByIdRequest\x1a\x1d.userinfo.GetUserByIdResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/api/users/{user_id}\x12u\n" +
-	"\x0eGetUserByEmail\x12\x1f.userinfo.GetUserByEmailRequest\x1a .userinfo.GetUserByEmailResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/api/users/email/{email}\x12e\n" +
+	"\x0eGetUserByEmail\x12\x1f.userinfo.GetUserByEmailRequest\x1a .userinfo.GetUserByEmailResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/api/users/email/{email}\x12h\n" +
 	"\n" +
-	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x1a\x14/api/users/{user_id}\x12e\n" +
+	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\x1a\x14/api/users/{user_id}\x12e\n" +
 	"\n" +
 	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16*\x14/api/users/{user_id}B*Z(github.com/alsadx/gm-protos/gen/go/ssov1b\x06proto3"
 
