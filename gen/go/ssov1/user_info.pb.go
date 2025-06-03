@@ -7,6 +7,7 @@
 package ssov1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -469,7 +470,7 @@ var File_sso_user_info_proto protoreflect.FileDescriptor
 
 const file_sso_user_info_proto_rawDesc = "" +
 	"\n" +
-	"\x13sso/user_info.proto\x12\buserinfo\"\x97\x01\n" +
+	"\x13sso/user_info.proto\x12\buserinfo\x1a\x1cgoogle/api/annotations.proto\"\x97\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
@@ -497,14 +498,14 @@ const file_sso_user_info_proto_rawDesc = "" +
 	"\x11DeleteUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xbd\x02\n" +
-	"\bUserInfo\x12J\n" +
-	"\vGetUserById\x12\x1c.userinfo.GetUserByIdRequest\x1a\x1d.userinfo.GetUserByIdResponse\x12S\n" +
-	"\x0eGetUserByEmail\x12\x1f.userinfo.GetUserByEmailRequest\x1a .userinfo.GetUserByEmailResponse\x12G\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb9\x03\n" +
+	"\bUserInfo\x12h\n" +
+	"\vGetUserById\x12\x1c.userinfo.GetUserByIdRequest\x1a\x1d.userinfo.GetUserByIdResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/api/users/{user_id}\x12u\n" +
+	"\x0eGetUserByEmail\x12\x1f.userinfo.GetUserByEmailRequest\x1a .userinfo.GetUserByEmailResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/api/users/email/{email}\x12e\n" +
 	"\n" +
-	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\x12G\n" +
+	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x1a\x14/api/users/{user_id}\x12e\n" +
 	"\n" +
-	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponseB*Z(github.com/alsadx/gm-protos/gen/go/ssov1b\x06proto3"
+	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16*\x14/api/users/{user_id}B*Z(github.com/alsadx/gm-protos/gen/go/ssov1b\x06proto3"
 
 var (
 	file_sso_user_info_proto_rawDescOnce sync.Once

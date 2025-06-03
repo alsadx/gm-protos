@@ -15,3 +15,8 @@ tasks:
     desc: "Generate code from proto file api"
     cmds:
       - protoc -I proto -I third_party/googleapis proto/api/*.proto proto/sso/*.proto proto/campaign/*.proto --go_out=./gen/go/ --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative --grpc-gateway_out=./gen/go --grpc-gateway_opt=logtostderr=true
+
+  gen-gw:
+    desc: "Generate code from proto file api with gw files"
+    cmds:
+      - protoc --proto_path=proto --proto_path=./third_party/googleapis --go_out=gen/go --go_opt=module=github.com/alsadx/gm-protos --grpc-gateway_out=gen/go --grpc-gateway_opt logtostderr=true --grpc-gateway_opt paths=source_relative proto/api/*.proto proto/sso/*.proto proto/campaign/*.proto

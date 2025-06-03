@@ -2,13 +2,34 @@ syntax = "proto3";
 
 package userinfo;
 
+import "google/api/annotations.proto";
+
 option go_package = "github.com/alsadx/gm-protos/gen/go/ssov1";
 
 service UserInfo {
-    rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);
-    rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse);
-    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
-    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+    rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse){
+        option (google.api.http) = {
+            get: "/api/users/{user_id}"
+        };
+    }
+
+    rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse){
+        option (google.api.http) = {
+            get: "/api/users/email/{email}"
+        };
+    }
+
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse){
+        option (google.api.http) = {
+            put: "/api/users/{user_id}"
+        };
+    }
+
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse){
+        option (google.api.http) = {
+            delete: "/api/users/{user_id}"
+        };
+    }
 }
 
 message User {

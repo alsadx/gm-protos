@@ -7,6 +7,7 @@
 package ssov1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -635,7 +636,7 @@ var File_sso_auth_proto protoreflect.FileDescriptor
 
 const file_sso_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x0esso/auth.proto\x12\x04auth\"W\n" +
+	"\x0esso/auth.proto\x12\x04auth\x1a\x1cgoogle/api/annotations.proto\"W\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
@@ -667,14 +668,13 @@ const file_sso_auth_proto_rawDesc = "" +
 	"\rServingStatus\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\v\n" +
 	"\aSERVING\x10\x01\x12\x0f\n" +
-	"\vNOT_SERVING\x10\x022\xeb\x02\n" +
-	"\x04Auth\x129\n" +
-	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
-	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponse\x12E\n" +
-	"\fRefreshToken\x12\x19.auth.RefreshTokenRequest\x1a\x1a.auth.RefreshTokenResponse\x123\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12B\n" +
-	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponseB*Z(github.com/alsadx/gm-protos/gen/go/ssov1b\x06proto3"
+	"\vNOT_SERVING\x10\x022\xba\x03\n" +
+	"\x04Auth\x12X\n" +
+	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/auth/register\x12L\n" +
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/api/auth/login\x12c\n" +
+	"\fRefreshToken\x12\x19.auth.RefreshTokenRequest\x1a\x1a.auth.RefreshTokenResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/auth/refresh\x12P\n" +
+	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/auth/logout\x12S\n" +
+	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponse\"\x0f\x82\xd3\xe4\x93\x02\t\x12\a/healthB*Z(github.com/alsadx/gm-protos/gen/go/ssov1b\x06proto3"
 
 var (
 	file_sso_auth_proto_rawDescOnce sync.Once
@@ -709,18 +709,16 @@ var file_sso_auth_proto_depIdxs = []int32{
 	0,  // 0: auth.HealthCheckResponse.status:type_name -> auth.HealthCheckResponse.ServingStatus
 	1,  // 1: auth.Auth.Register:input_type -> auth.RegisterRequest
 	3,  // 2: auth.Auth.Login:input_type -> auth.LoginRequest
-	5,  // 3: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
-	7,  // 4: auth.Auth.RefreshToken:input_type -> auth.RefreshTokenRequest
-	9,  // 5: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	11, // 6: auth.Auth.HealthCheck:input_type -> auth.HealthCheckRequest
-	2,  // 7: auth.Auth.Register:output_type -> auth.RegisterResponse
-	4,  // 8: auth.Auth.Login:output_type -> auth.LoginResponse
-	6,  // 9: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
-	8,  // 10: auth.Auth.RefreshToken:output_type -> auth.RefreshTokenResponse
-	10, // 11: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	12, // 12: auth.Auth.HealthCheck:output_type -> auth.HealthCheckResponse
-	7,  // [7:13] is the sub-list for method output_type
-	1,  // [1:7] is the sub-list for method input_type
+	7,  // 3: auth.Auth.RefreshToken:input_type -> auth.RefreshTokenRequest
+	9,  // 4: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	11, // 5: auth.Auth.HealthCheck:input_type -> auth.HealthCheckRequest
+	2,  // 6: auth.Auth.Register:output_type -> auth.RegisterResponse
+	4,  // 7: auth.Auth.Login:output_type -> auth.LoginResponse
+	8,  // 8: auth.Auth.RefreshToken:output_type -> auth.RefreshTokenResponse
+	10, // 9: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	12, // 10: auth.Auth.HealthCheck:output_type -> auth.HealthCheckResponse
+	6,  // [6:11] is the sub-list for method output_type
+	1,  // [1:6] is the sub-list for method input_type
 	1,  // [1:1] is the sub-list for extension type_name
 	1,  // [1:1] is the sub-list for extension extendee
 	0,  // [0:1] is the sub-list for field type_name

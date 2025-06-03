@@ -2,18 +2,57 @@ syntax = "proto3";
 
 package campaign;
 
+import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/alsadx/gm-protos/gen/go/campaignv1";
 
 service CampaignTool {
-    rpc CreateCampaign (CreateCampaignRequest) returns (CreateCampaignResponse);
-    rpc DeleteCampaign (DeleteCampaignRequest) returns (DeleteCampaignResponse);
-    rpc GenerateInviteCode (GenerateInviteCodeRequest) returns (GenerateInviteCodeResponse);
-    rpc JoinCampaign (JoinCampaignRequest) returns (JoinCampaignResponse);
-    rpc LeaveCampaign (LeaveCampaignRequest) returns (LeaveCampaignResponse);
-    rpc GetCreatedCampaigns (GetCreatedCampaignsRequest) returns (GetCreatedCampaignsResponse);
-    rpc GetCurrentCampaigns (GetCurrentCampaignsRequest) returns (GetCurrentCampaignsResponse);
+    rpc CreateCampaign (CreateCampaignRequest) returns (CreateCampaignResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns"
+            body: "*"
+        };
+    }
+
+    rpc DeleteCampaign (DeleteCampaignRequest) returns (DeleteCampaignResponse) {
+        option (google.api.http) = {
+            delete: "/api/campaigns/{campaign_id}"
+        };
+    }
+
+    rpc GenerateInviteCode (GenerateInviteCodeRequest) returns (GenerateInviteCodeResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/{campaign_id}/invite-code"
+            body: "*"
+        };
+    }
+
+    rpc JoinCampaign (JoinCampaignRequest) returns (JoinCampaignResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/join"
+            body: "*"
+        };
+    }
+
+    rpc LeaveCampaign (LeaveCampaignRequest) returns (LeaveCampaignResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/leave"
+            body: "*"
+        };
+    }
+
+    rpc GetCreatedCampaigns (GetCreatedCampaignsRequest) returns (GetCreatedCampaignsResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/created"
+        };
+    }
+
+    rpc GetCurrentCampaigns (GetCurrentCampaignsRequest) returns (GetCurrentCampaignsResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/current"
+        };
+    }
 }
 
 message CreateCampaignRequest {

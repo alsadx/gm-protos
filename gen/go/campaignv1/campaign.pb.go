@@ -7,6 +7,7 @@
 package campaignv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -842,7 +843,7 @@ var File_campaign_campaign_proto protoreflect.FileDescriptor
 
 const file_campaign_campaign_proto_rawDesc = "" +
 	"\n" +
-	"\x17campaign/campaign.proto\x12\bcampaign\x1a\x1fgoogle/protobuf/timestamp.proto\"{\n" +
+	"\x17campaign/campaign.proto\x12\bcampaign\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"{\n" +
 	"\x15CreateCampaignRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12%\n" +
 	"\vdescription\x18\x02 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x17\n" +
@@ -900,15 +901,15 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
 	"\tmaster_id\x18\x03 \x01(\x03R\bmasterId\"X\n" +
 	"\x1bGetCurrentCampaignsResponse\x129\n" +
-	"\tcampaigns\x18\x01 \x03(\v2\x1b.campaign.CampaignForPlayerR\tcampaigns2\x82\x05\n" +
-	"\fCampaignTool\x12S\n" +
-	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\x12S\n" +
-	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\x12_\n" +
-	"\x12GenerateInviteCode\x12#.campaign.GenerateInviteCodeRequest\x1a$.campaign.GenerateInviteCodeResponse\x12M\n" +
-	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\x12P\n" +
-	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\x12b\n" +
-	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\x12b\n" +
-	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponseB/Z-github.com/alsadx/gm-protos/gen/go/campaignv1b\x06proto3"
+	"\tcampaigns\x18\x01 \x03(\v2\x1b.campaign.CampaignForPlayerR\tcampaigns2\xfc\x06\n" +
+	"\fCampaignTool\x12n\n" +
+	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/campaigns\x12y\n" +
+	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e*\x1c/api/campaigns/{campaign_id}\x12\x94\x01\n" +
+	"\x12GenerateInviteCode\x12#.campaign.GenerateInviteCodeRequest\x1a$.campaign.GenerateInviteCodeResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/api/campaigns/{campaign_id}/invite-code\x12m\n" +
+	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/campaigns/join\x12q\n" +
+	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/campaigns/leave\x12\x82\x01\n" +
+	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/created\x12\x82\x01\n" +
+	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/currentB/Z-github.com/alsadx/gm-protos/gen/go/campaignv1b\x06proto3"
 
 var (
 	file_campaign_campaign_proto_rawDescOnce sync.Once
