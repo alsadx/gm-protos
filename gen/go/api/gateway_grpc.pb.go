@@ -8,8 +8,8 @@ package v1
 
 import (
 	context "context"
-	v11 "github.com/alsadx/gm-protos/campaign/v1"
-	v1 "github.com/alsadx/gm-protos/sso/v1"
+	v11 "github.com/alsadx/gm-protos/gen/go/campaign/v1"
+	v1 "github.com/alsadx/gm-protos/gen/go/sso/v1"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

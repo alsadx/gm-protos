@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package userinfo;
 
-option go_package = "github.com/alsadx/gm-protos/sso/v1";
+option go_package = "github.com/alsadx/gm-protos/gen/go/sso/v1";
 
 service UserInfo {
     rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse);

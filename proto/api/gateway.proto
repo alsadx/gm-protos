@@ -7,7 +7,7 @@ import "sso/auth.proto";
 import "sso/user_info.proto";
 import "campaign/campaign.proto";
 
-option go_package = "github.com/alsadx/gm-protos/api/v1";
+option go_package = "github.com/alsadx/gm-protos/gen/go/api/v1";
 
 service Gateway {
     // Auth Service
@@ -39,7 +39,7 @@ service Gateway {
     // UserInfo Service
     rpc GetUserById (userinfo.GetUserByIdRequest) returns (userinfo.GetUserByIdResponse) {
         option (google.api.http) = {
-            get: "/api/users/{id}"
+            get: "/api/users/{user_id}"
         };
     }
     rpc GetUserByEmail (userinfo.GetUserByEmailRequest) returns (userinfo.GetUserByEmailResponse) {
@@ -49,13 +49,13 @@ service Gateway {
     }
     rpc UpdateUser (userinfo.UpdateUserRequest) returns (userinfo.UpdateUserResponse) {
         option (google.api.http) = {
-            put: "/api/users/{id}"
+            put: "/api/users/{user_id}"
             body: "*"
         };
     }
     rpc DeleteUser (userinfo.DeleteUserRequest) returns (userinfo.DeleteUserResponse) {
         option (google.api.http) = {
-            delete: "/api/users/{id}"
+            delete: "/api/users/{user_id}"
         };
     }
 
@@ -68,24 +68,24 @@ service Gateway {
     }
     rpc DeleteCampaign (campaign.DeleteCampaignRequest) returns (campaign.DeleteCampaignResponse) {
         option (google.api.http) = {
-            delete: "/api/campaigns/{id}"
+            delete: "/api/campaigns/{campaign_id}"
         };
     }
     rpc GenerateInviteCode (campaign.GenerateInviteCodeRequest) returns (campaign.GenerateInviteCodeResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{id}/invite-code"
+            post: "/api/campaigns/{campaign_id}/invite-code"
             body: "*"
         };
     }
     rpc JoinCampaign (campaign.JoinCampaignRequest) returns (campaign.JoinCampaignResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{id}/join"
+            post: "/api/campaigns/{user_id}/join"
             body: "*"
         };
     }
     rpc LeaveCampaign (campaign.LeaveCampaignRequest) returns (campaign.LeaveCampaignResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{id}/leave"
+            post: "/api/campaigns/{user_id}/leave"
             body: "*"
         };
     }

@@ -1,0 +1,13 @@
+version: v1
+plugins:
+  - name: go
+    out: gen/go
+    opt: module=github.com/alsadx/gm-protos
+  - name: go-grpc
+    out: gen/go
+    opt: module=github.com/alsadx/gm-protos
+  - name: grpc-gateway
+    out: gen/go
+    opt:
+      - module=github.com/alsadx/gm-protos
+      - logtostderr=true

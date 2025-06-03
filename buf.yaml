@@ -1,0 +1,14 @@
+version: v1
+name: github.com/alsadx/gm-protos
+modules:
+  - path: proto
+    name: api
+deps:
+  - buf.build/googleapis/googleapis
+lint:
+  use:
+    - basic
+    - uber-zap
+breaking:
+  use:
+    - basic

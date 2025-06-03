@@ -7,8 +7,8 @@
 package v1
 
 import (
-	v11 "github.com/alsadx/gm-protos/campaign/v1"
-	v1 "github.com/alsadx/gm-protos/sso/v1"
+	v11 "github.com/alsadx/gm-protos/gen/go/campaign/v1"
+	v1 "github.com/alsadx/gm-protos/gen/go/sso/v1"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -27,26 +27,26 @@ var File_api_gateway_proto protoreflect.FileDescriptor
 
 const file_api_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x11api/gateway.proto\x12\agateway\x1a\x1cgoogle/api/annotations.proto\x1a\x0esso/auth.proto\x1a\x13sso/user_info.proto\x1a\x17campaign/campaign.proto2\xc6\r\n" +
+	"\x11api/gateway.proto\x12\agateway\x1a\x1cgoogle/api/annotations.proto\x1a\x0esso/auth.proto\x1a\x13sso/user_info.proto\x1a\x17campaign/campaign.proto2\xf1\r\n" +
 	"\aGateway\x12X\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/auth/register\x12L\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/api/auth/login\x12c\n" +
 	"\fRefreshToken\x12\x19.auth.RefreshTokenRequest\x1a\x1a.auth.RefreshTokenResponse\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/auth/refresh\x12P\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/auth/logout\x12c\n" +
-	"\vGetUserById\x12\x1c.userinfo.GetUserByIdRequest\x1a\x1d.userinfo.GetUserByIdResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/api/users/{id}\x12u\n" +
-	"\x0eGetUserByEmail\x12\x1f.userinfo.GetUserByEmailRequest\x1a .userinfo.GetUserByEmailResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/api/users/email/{email}\x12c\n" +
+	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/auth/logout\x12h\n" +
+	"\vGetUserById\x12\x1c.userinfo.GetUserByIdRequest\x1a\x1d.userinfo.GetUserByIdResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/api/users/{user_id}\x12u\n" +
+	"\x0eGetUserByEmail\x12\x1f.userinfo.GetUserByEmailRequest\x1a .userinfo.GetUserByEmailResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/api/users/email/{email}\x12h\n" +
 	"\n" +
-	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\x1a\x0f/api/users/{id}\x12`\n" +
+	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\x1a\x14/api/users/{user_id}\x12e\n" +
 	"\n" +
-	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponse\"\x17\x82\xd3\xe4\x93\x02\x11*\x0f/api/users/{id}\x12n\n" +
-	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/campaigns\x12p\n" +
-	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/api/campaigns/{id}\x12\x8b\x01\n" +
-	"\x12GenerateInviteCode\x12#.campaign.GenerateInviteCodeRequest\x1a$.campaign.GenerateInviteCodeResponse\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/api/campaigns/{id}/invite-code\x12r\n" +
-	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/api/campaigns/{id}/join\x12v\n" +
-	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e:\x01*\"\x19/api/campaigns/{id}/leave\x12\x82\x01\n" +
+	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponse\"\x1c\x82\xd3\xe4\x93\x02\x16*\x14/api/users/{user_id}\x12n\n" +
+	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/campaigns\x12y\n" +
+	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e*\x1c/api/campaigns/{campaign_id}\x12\x94\x01\n" +
+	"\x12GenerateInviteCode\x12#.campaign.GenerateInviteCodeRequest\x1a$.campaign.GenerateInviteCodeResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/api/campaigns/{campaign_id}/invite-code\x12w\n" +
+	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/api/campaigns/{user_id}/join\x12{\n" +
+	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/campaigns/{user_id}/leave\x12\x82\x01\n" +
 	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/created\x12\x82\x01\n" +
 	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/current\x12S\n" +
-	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponse\"\x0f\x82\xd3\xe4\x93\x02\t\x12\a/healthB$Z\"github.com/alsadx/gm-protos/api/v1b\x06proto3"
+	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponse\"\x0f\x82\xd3\xe4\x93\x02\t\x12\a/healthB+Z)github.com/alsadx/gm-protos/gen/go/api/v1b\x06proto3"
 
 var file_api_gateway_proto_goTypes = []any{
 	(*v1.RegisterRequest)(nil),              // 0: auth.RegisterRequest

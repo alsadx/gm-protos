@@ -4,7 +4,7 @@ package campaign;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/alsadx/gm-protos/campaign/v1";
+option go_package = "github.com/alsadx/gm-protos/gen/go/campaign/v1";
 
 service CampaignTool {
     rpc CreateCampaign (CreateCampaignRequest) returns (CreateCampaignResponse);
