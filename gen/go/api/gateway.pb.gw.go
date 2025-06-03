@@ -2,11 +2,11 @@
 // source: api/gateway.proto
 
 /*
-Package v1 is a reverse proxy.
+Package apiv1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package v1
+package apiv1
 
 import (
 	"context"
@@ -14,8 +14,8 @@ import (
 	"io"
 	"net/http"
 
-	v1_0 "github.com/alsadx/gm-protos/gen/go/campaign/v1"
-	v1_1 "github.com/alsadx/gm-protos/gen/go/sso/v1"
+	"github.com/alsadx/gm-protos/gen/go/campaignv1"
+	"github.com/alsadx/gm-protos/gen/go/ssov1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -39,7 +39,7 @@ var (
 
 func request_Gateway_Register_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.RegisterRequest
+		protoReq ssov1.RegisterRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -51,7 +51,7 @@ func request_Gateway_Register_0(ctx context.Context, marshaler runtime.Marshaler
 
 func local_request_Gateway_Register_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.RegisterRequest
+		protoReq ssov1.RegisterRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -63,7 +63,7 @@ func local_request_Gateway_Register_0(ctx context.Context, marshaler runtime.Mar
 
 func request_Gateway_Login_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.LoginRequest
+		protoReq ssov1.LoginRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -75,7 +75,7 @@ func request_Gateway_Login_0(ctx context.Context, marshaler runtime.Marshaler, c
 
 func local_request_Gateway_Login_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.LoginRequest
+		protoReq ssov1.LoginRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -87,7 +87,7 @@ func local_request_Gateway_Login_0(ctx context.Context, marshaler runtime.Marsha
 
 func request_Gateway_RefreshToken_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.RefreshTokenRequest
+		protoReq ssov1.RefreshTokenRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -99,7 +99,7 @@ func request_Gateway_RefreshToken_0(ctx context.Context, marshaler runtime.Marsh
 
 func local_request_Gateway_RefreshToken_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.RefreshTokenRequest
+		protoReq ssov1.RefreshTokenRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -111,7 +111,7 @@ func local_request_Gateway_RefreshToken_0(ctx context.Context, marshaler runtime
 
 func request_Gateway_Logout_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.LogoutRequest
+		protoReq ssov1.LogoutRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -123,7 +123,7 @@ func request_Gateway_Logout_0(ctx context.Context, marshaler runtime.Marshaler, 
 
 func local_request_Gateway_Logout_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.LogoutRequest
+		protoReq ssov1.LogoutRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -135,7 +135,7 @@ func local_request_Gateway_Logout_0(ctx context.Context, marshaler runtime.Marsh
 
 func request_Gateway_GetUserById_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.GetUserByIdRequest
+		protoReq ssov1.GetUserByIdRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -154,7 +154,7 @@ func request_Gateway_GetUserById_0(ctx context.Context, marshaler runtime.Marsha
 
 func local_request_Gateway_GetUserById_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.GetUserByIdRequest
+		protoReq ssov1.GetUserByIdRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -172,7 +172,7 @@ func local_request_Gateway_GetUserById_0(ctx context.Context, marshaler runtime.
 
 func request_Gateway_GetUserByEmail_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.GetUserByEmailRequest
+		protoReq ssov1.GetUserByEmailRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -191,7 +191,7 @@ func request_Gateway_GetUserByEmail_0(ctx context.Context, marshaler runtime.Mar
 
 func local_request_Gateway_GetUserByEmail_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.GetUserByEmailRequest
+		protoReq ssov1.GetUserByEmailRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -209,7 +209,7 @@ func local_request_Gateway_GetUserByEmail_0(ctx context.Context, marshaler runti
 
 func request_Gateway_UpdateUser_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.UpdateUserRequest
+		protoReq ssov1.UpdateUserRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -230,7 +230,7 @@ func request_Gateway_UpdateUser_0(ctx context.Context, marshaler runtime.Marshal
 
 func local_request_Gateway_UpdateUser_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.UpdateUserRequest
+		protoReq ssov1.UpdateUserRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -251,7 +251,7 @@ func local_request_Gateway_UpdateUser_0(ctx context.Context, marshaler runtime.M
 
 func request_Gateway_DeleteUser_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.DeleteUserRequest
+		protoReq ssov1.DeleteUserRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -270,7 +270,7 @@ func request_Gateway_DeleteUser_0(ctx context.Context, marshaler runtime.Marshal
 
 func local_request_Gateway_DeleteUser_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.DeleteUserRequest
+		protoReq ssov1.DeleteUserRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -288,7 +288,7 @@ func local_request_Gateway_DeleteUser_0(ctx context.Context, marshaler runtime.M
 
 func request_Gateway_CreateCampaign_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.CreateCampaignRequest
+		protoReq campaignv1.CreateCampaignRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -300,7 +300,7 @@ func request_Gateway_CreateCampaign_0(ctx context.Context, marshaler runtime.Mar
 
 func local_request_Gateway_CreateCampaign_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.CreateCampaignRequest
+		protoReq campaignv1.CreateCampaignRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
@@ -314,7 +314,7 @@ var filter_Gateway_DeleteCampaign_0 = &utilities.DoubleArray{Encoding: map[strin
 
 func request_Gateway_DeleteCampaign_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.DeleteCampaignRequest
+		protoReq campaignv1.DeleteCampaignRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -339,7 +339,7 @@ func request_Gateway_DeleteCampaign_0(ctx context.Context, marshaler runtime.Mar
 
 func local_request_Gateway_DeleteCampaign_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.DeleteCampaignRequest
+		protoReq campaignv1.DeleteCampaignRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -363,7 +363,7 @@ func local_request_Gateway_DeleteCampaign_0(ctx context.Context, marshaler runti
 
 func request_Gateway_GenerateInviteCode_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.GenerateInviteCodeRequest
+		protoReq campaignv1.GenerateInviteCodeRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -384,7 +384,7 @@ func request_Gateway_GenerateInviteCode_0(ctx context.Context, marshaler runtime
 
 func local_request_Gateway_GenerateInviteCode_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.GenerateInviteCodeRequest
+		protoReq campaignv1.GenerateInviteCodeRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -405,7 +405,7 @@ func local_request_Gateway_GenerateInviteCode_0(ctx context.Context, marshaler r
 
 func request_Gateway_JoinCampaign_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.JoinCampaignRequest
+		protoReq campaignv1.JoinCampaignRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -426,7 +426,7 @@ func request_Gateway_JoinCampaign_0(ctx context.Context, marshaler runtime.Marsh
 
 func local_request_Gateway_JoinCampaign_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.JoinCampaignRequest
+		protoReq campaignv1.JoinCampaignRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -447,7 +447,7 @@ func local_request_Gateway_JoinCampaign_0(ctx context.Context, marshaler runtime
 
 func request_Gateway_LeaveCampaign_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.LeaveCampaignRequest
+		protoReq campaignv1.LeaveCampaignRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -468,7 +468,7 @@ func request_Gateway_LeaveCampaign_0(ctx context.Context, marshaler runtime.Mars
 
 func local_request_Gateway_LeaveCampaign_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.LeaveCampaignRequest
+		protoReq campaignv1.LeaveCampaignRequest
 		metadata runtime.ServerMetadata
 		err      error
 	)
@@ -491,7 +491,7 @@ var filter_Gateway_GetCreatedCampaigns_0 = &utilities.DoubleArray{Encoding: map[
 
 func request_Gateway_GetCreatedCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.GetCreatedCampaignsRequest
+		protoReq campaignv1.GetCreatedCampaignsRequest
 		metadata runtime.ServerMetadata
 	)
 	io.Copy(io.Discard, req.Body)
@@ -507,7 +507,7 @@ func request_Gateway_GetCreatedCampaigns_0(ctx context.Context, marshaler runtim
 
 func local_request_Gateway_GetCreatedCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.GetCreatedCampaignsRequest
+		protoReq campaignv1.GetCreatedCampaignsRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := req.ParseForm(); err != nil {
@@ -524,7 +524,7 @@ var filter_Gateway_GetCurrentCampaigns_0 = &utilities.DoubleArray{Encoding: map[
 
 func request_Gateway_GetCurrentCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.GetCurrentCampaignsRequest
+		protoReq campaignv1.GetCurrentCampaignsRequest
 		metadata runtime.ServerMetadata
 	)
 	io.Copy(io.Discard, req.Body)
@@ -540,7 +540,7 @@ func request_Gateway_GetCurrentCampaigns_0(ctx context.Context, marshaler runtim
 
 func local_request_Gateway_GetCurrentCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_0.GetCurrentCampaignsRequest
+		protoReq campaignv1.GetCurrentCampaignsRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := req.ParseForm(); err != nil {
@@ -555,7 +555,7 @@ func local_request_Gateway_GetCurrentCampaigns_0(ctx context.Context, marshaler 
 
 func request_Gateway_HealthCheck_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.HealthCheckRequest
+		protoReq ssov1.HealthCheckRequest
 		metadata runtime.ServerMetadata
 	)
 	io.Copy(io.Discard, req.Body)
@@ -565,7 +565,7 @@ func request_Gateway_HealthCheck_0(ctx context.Context, marshaler runtime.Marsha
 
 func local_request_Gateway_HealthCheck_0(ctx context.Context, marshaler runtime.Marshaler, server GatewayServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq v1_1.HealthCheckRequest
+		protoReq ssov1.HealthCheckRequest
 		metadata runtime.ServerMetadata
 	)
 	msg, err := server.HealthCheck(ctx, &protoReq)

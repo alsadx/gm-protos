@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: sso/user_info.proto
 
-package v1
+package ssov1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -504,7 +504,7 @@ const file_sso_user_info_proto_rawDesc = "" +
 	"\n" +
 	"UpdateUser\x12\x1b.userinfo.UpdateUserRequest\x1a\x1c.userinfo.UpdateUserResponse\x12G\n" +
 	"\n" +
-	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponseB+Z)github.com/alsadx/gm-protos/gen/go/sso/v1b\x06proto3"
+	"DeleteUser\x12\x1b.userinfo.DeleteUserRequest\x1a\x1c.userinfo.DeleteUserResponseB*Z(github.com/alsadx/gm-protos/gen/go/ssov1b\x06proto3"
 
 var (
 	file_sso_user_info_proto_rawDescOnce sync.Once

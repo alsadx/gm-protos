@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: sso/auth.proto
 
-package v1
+package ssov1
 
 import (
 	context "context"
