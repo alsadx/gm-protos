@@ -91,12 +91,12 @@ service Gateway {
     }
     rpc GetCreatedCampaigns (campaign.GetCreatedCampaignsRequest) returns (campaign.GetCreatedCampaignsResponse) {
         option (google.api.http) = {
-            get: "/api/campaigns/created"
+            get: "/api/campaigns/created/{user_id}"
         };
     }
     rpc GetCurrentCampaigns (campaign.GetCurrentCampaignsRequest) returns (campaign.GetCurrentCampaignsResponse) {
         option (google.api.http) = {
-            get: "/api/campaigns/current"
+            get: "/api/campaigns/current/{user_id}"
         };
     }
 

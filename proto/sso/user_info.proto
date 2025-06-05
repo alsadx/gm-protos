@@ -22,6 +22,7 @@ service UserInfo {
     rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse){
         option (google.api.http) = {
             put: "/api/users/{user_id}"
+            body: "*"
         };
     }
 
