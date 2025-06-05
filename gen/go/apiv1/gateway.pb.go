@@ -27,7 +27,7 @@ var File_api_gateway_proto protoreflect.FileDescriptor
 
 const file_api_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x11api/gateway.proto\x12\agateway\x1a\x1cgoogle/api/annotations.proto\x1a\x0esso/auth.proto\x1a\x13sso/user_info.proto\x1a\x17campaign/campaign.proto2\xf1\r\n" +
+	"\x11api/gateway.proto\x12\agateway\x1a\x1cgoogle/api/annotations.proto\x1a\x0esso/auth.proto\x1a\x13sso/user_info.proto\x1a\x17campaign/campaign.proto2\x85\x0e\n" +
 	"\aGateway\x12X\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/auth/register\x12L\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/api/auth/login\x12c\n" +
@@ -43,9 +43,9 @@ const file_api_gateway_proto_rawDesc = "" +
 	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e*\x1c/api/campaigns/{campaign_id}\x12\x94\x01\n" +
 	"\x12GenerateInviteCode\x12#.campaign.GenerateInviteCodeRequest\x1a$.campaign.GenerateInviteCodeResponse\"3\x82\xd3\xe4\x93\x02-:\x01*\"(/api/campaigns/{campaign_id}/invite-code\x12w\n" +
 	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/api/campaigns/{user_id}/join\x12{\n" +
-	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/campaigns/{user_id}/leave\x12\x82\x01\n" +
-	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/created\x12\x82\x01\n" +
-	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/campaigns/current\x12S\n" +
+	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/campaigns/{user_id}/leave\x12\x8c\x01\n" +
+	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/created/{user_id}\x12\x8c\x01\n" +
+	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/current/{user_id}\x12S\n" +
 	"\vHealthCheck\x12\x18.auth.HealthCheckRequest\x1a\x19.auth.HealthCheckResponse\"\x0f\x82\xd3\xe4\x93\x02\t\x12\a/healthB*Z(github.com/alsadx/gm-protos/gen/go/apiv1b\x06proto3"
 
 var file_api_gateway_proto_goTypes = []any{

@@ -487,19 +487,20 @@ func local_request_Gateway_LeaveCampaign_0(ctx context.Context, marshaler runtim
 	return msg, metadata, err
 }
 
-var filter_Gateway_GetCreatedCampaigns_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-
 func request_Gateway_GetCreatedCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq campaignv1.GetCreatedCampaignsRequest
 		metadata runtime.ServerMetadata
+		err      error
 	)
 	io.Copy(io.Discard, req.Body)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok := pathParams["user_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Gateway_GetCreatedCampaigns_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	protoReq.UserId, err = runtime.Int64(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
 	msg, err := client.GetCreatedCampaigns(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -509,30 +510,34 @@ func local_request_Gateway_GetCreatedCampaigns_0(ctx context.Context, marshaler 
 	var (
 		protoReq campaignv1.GetCreatedCampaignsRequest
 		metadata runtime.ServerMetadata
+		err      error
 	)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok := pathParams["user_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Gateway_GetCreatedCampaigns_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	protoReq.UserId, err = runtime.Int64(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
 	msg, err := server.GetCreatedCampaigns(ctx, &protoReq)
 	return msg, metadata, err
 }
 
-var filter_Gateway_GetCurrentCampaigns_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-
 func request_Gateway_GetCurrentCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, client GatewayClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq campaignv1.GetCurrentCampaignsRequest
 		metadata runtime.ServerMetadata
+		err      error
 	)
 	io.Copy(io.Discard, req.Body)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok := pathParams["user_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Gateway_GetCurrentCampaigns_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	protoReq.UserId, err = runtime.Int64(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
 	msg, err := client.GetCurrentCampaigns(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -542,12 +547,15 @@ func local_request_Gateway_GetCurrentCampaigns_0(ctx context.Context, marshaler 
 	var (
 		protoReq campaignv1.GetCurrentCampaignsRequest
 		metadata runtime.ServerMetadata
+		err      error
 	)
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok := pathParams["user_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Gateway_GetCurrentCampaigns_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	protoReq.UserId, err = runtime.Int64(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
 	msg, err := server.GetCurrentCampaigns(ctx, &protoReq)
 	return msg, metadata, err
@@ -844,7 +852,7 @@ func RegisterGatewayHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gateway.Gateway/GetCreatedCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/created"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gateway.Gateway/GetCreatedCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/created/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -864,7 +872,7 @@ func RegisterGatewayHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gateway.Gateway/GetCurrentCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/current"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/gateway.Gateway/GetCurrentCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/current/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1163,7 +1171,7 @@ func RegisterGatewayHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/gateway.Gateway/GetCreatedCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/created"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/gateway.Gateway/GetCreatedCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/created/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1180,7 +1188,7 @@ func RegisterGatewayHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/gateway.Gateway/GetCurrentCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/current"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/gateway.Gateway/GetCurrentCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/current/{user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1227,8 +1235,8 @@ var (
 	pattern_Gateway_GenerateInviteCode_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "campaign_id", "invite-code"}, ""))
 	pattern_Gateway_JoinCampaign_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "user_id", "join"}, ""))
 	pattern_Gateway_LeaveCampaign_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "user_id", "leave"}, ""))
-	pattern_Gateway_GetCreatedCampaigns_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "campaigns", "created"}, ""))
-	pattern_Gateway_GetCurrentCampaigns_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "campaigns", "current"}, ""))
+	pattern_Gateway_GetCreatedCampaigns_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "campaigns", "created", "user_id"}, ""))
+	pattern_Gateway_GetCurrentCampaigns_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "campaigns", "current", "user_id"}, ""))
 	pattern_Gateway_HealthCheck_0         = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"health"}, ""))
 )
 
