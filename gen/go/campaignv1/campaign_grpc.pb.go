@@ -21,9 +21,11 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	CampaignTool_CreateCampaign_FullMethodName        = "/campaign.CampaignTool/CreateCampaign"
 	CampaignTool_DeleteCampaign_FullMethodName        = "/campaign.CampaignTool/DeleteCampaign"
+	CampaignTool_UpdateCampaign_FullMethodName        = "/campaign.CampaignTool/UpdateCampaign"
 	CampaignTool_GenerateInviteCode_FullMethodName    = "/campaign.CampaignTool/GenerateInviteCode"
 	CampaignTool_JoinCampaign_FullMethodName          = "/campaign.CampaignTool/JoinCampaign"
 	CampaignTool_LeaveCampaign_FullMethodName         = "/campaign.CampaignTool/LeaveCampaign"
+	CampaignTool_RemovePlayer_FullMethodName          = "/campaign.CampaignTool/RemovePlayer"
 	CampaignTool_GetCreatedCampaigns_FullMethodName   = "/campaign.CampaignTool/GetCreatedCampaigns"
 	CampaignTool_GetCurrentCampaigns_FullMethodName   = "/campaign.CampaignTool/GetCurrentCampaigns"
 	CampaignTool_GetCampaignPlayers_FullMethodName    = "/campaign.CampaignTool/GetCampaignPlayers"
@@ -38,9 +40,11 @@ const (
 type CampaignToolClient interface {
 	CreateCampaign(ctx context.Context, in *CreateCampaignRequest, opts ...grpc.CallOption) (*CreateCampaignResponse, error)
 	DeleteCampaign(ctx context.Context, in *DeleteCampaignRequest, opts ...grpc.CallOption) (*DeleteCampaignResponse, error)
+	UpdateCampaign(ctx context.Context, in *UpdateCampaignRequest, opts ...grpc.CallOption) (*UpdateCampaignResponse, error)
 	GenerateInviteCode(ctx context.Context, in *GenerateInviteCodeRequest, opts ...grpc.CallOption) (*GenerateInviteCodeResponse, error)
 	JoinCampaign(ctx context.Context, in *JoinCampaignRequest, opts ...grpc.CallOption) (*JoinCampaignResponse, error)
 	LeaveCampaign(ctx context.Context, in *LeaveCampaignRequest, opts ...grpc.CallOption) (*LeaveCampaignResponse, error)
+	RemovePlayer(ctx context.Context, in *RemovePlayerRequest, opts ...grpc.CallOption) (*RemovePlayerResponse, error)
 	GetCreatedCampaigns(ctx context.Context, in *GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*GetCreatedCampaignsResponse, error)
 	GetCurrentCampaigns(ctx context.Context, in *GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*GetCurrentCampaignsResponse, error)
 	GetCampaignPlayers(ctx context.Context, in *GetCampaignPlayersRequest, opts ...grpc.CallOption) (*GetCampaignPlayersResponse, error)
@@ -77,6 +81,16 @@ func (c *campaignToolClient) DeleteCampaign(ctx context.Context, in *DeleteCampa
 	return out, nil
 }
 
+func (c *campaignToolClient) UpdateCampaign(ctx context.Context, in *UpdateCampaignRequest, opts ...grpc.CallOption) (*UpdateCampaignResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCampaignResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_UpdateCampaign_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *campaignToolClient) GenerateInviteCode(ctx context.Context, in *GenerateInviteCodeRequest, opts ...grpc.CallOption) (*GenerateInviteCodeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateInviteCodeResponse)
@@ -101,6 +115,16 @@ func (c *campaignToolClient) LeaveCampaign(ctx context.Context, in *LeaveCampaig
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(LeaveCampaignResponse)
 	err := c.cc.Invoke(ctx, CampaignTool_LeaveCampaign_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *campaignToolClient) RemovePlayer(ctx context.Context, in *RemovePlayerRequest, opts ...grpc.CallOption) (*RemovePlayerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemovePlayerResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_RemovePlayer_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -173,9 +197,11 @@ func (c *campaignToolClient) GetCampaignNPC(ctx context.Context, in *GetCampaign
 type CampaignToolServer interface {
 	CreateCampaign(context.Context, *CreateCampaignRequest) (*CreateCampaignResponse, error)
 	DeleteCampaign(context.Context, *DeleteCampaignRequest) (*DeleteCampaignResponse, error)
+	UpdateCampaign(context.Context, *UpdateCampaignRequest) (*UpdateCampaignResponse, error)
 	GenerateInviteCode(context.Context, *GenerateInviteCodeRequest) (*GenerateInviteCodeResponse, error)
 	JoinCampaign(context.Context, *JoinCampaignRequest) (*JoinCampaignResponse, error)
 	LeaveCampaign(context.Context, *LeaveCampaignRequest) (*LeaveCampaignResponse, error)
+	RemovePlayer(context.Context, *RemovePlayerRequest) (*RemovePlayerResponse, error)
 	GetCreatedCampaigns(context.Context, *GetCreatedCampaignsRequest) (*GetCreatedCampaignsResponse, error)
 	GetCurrentCampaigns(context.Context, *GetCurrentCampaignsRequest) (*GetCurrentCampaignsResponse, error)
 	GetCampaignPlayers(context.Context, *GetCampaignPlayersRequest) (*GetCampaignPlayersResponse, error)
@@ -198,6 +224,9 @@ func (UnimplementedCampaignToolServer) CreateCampaign(context.Context, *CreateCa
 func (UnimplementedCampaignToolServer) DeleteCampaign(context.Context, *DeleteCampaignRequest) (*DeleteCampaignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCampaign not implemented")
 }
+func (UnimplementedCampaignToolServer) UpdateCampaign(context.Context, *UpdateCampaignRequest) (*UpdateCampaignResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCampaign not implemented")
+}
 func (UnimplementedCampaignToolServer) GenerateInviteCode(context.Context, *GenerateInviteCodeRequest) (*GenerateInviteCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateInviteCode not implemented")
 }
@@ -206,6 +235,9 @@ func (UnimplementedCampaignToolServer) JoinCampaign(context.Context, *JoinCampai
 }
 func (UnimplementedCampaignToolServer) LeaveCampaign(context.Context, *LeaveCampaignRequest) (*LeaveCampaignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaveCampaign not implemented")
+}
+func (UnimplementedCampaignToolServer) RemovePlayer(context.Context, *RemovePlayerRequest) (*RemovePlayerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemovePlayer not implemented")
 }
 func (UnimplementedCampaignToolServer) GetCreatedCampaigns(context.Context, *GetCreatedCampaignsRequest) (*GetCreatedCampaignsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCreatedCampaigns not implemented")
@@ -282,6 +314,24 @@ func _CampaignTool_DeleteCampaign_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CampaignTool_UpdateCampaign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCampaignRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).UpdateCampaign(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_UpdateCampaign_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).UpdateCampaign(ctx, req.(*UpdateCampaignRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CampaignTool_GenerateInviteCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateInviteCodeRequest)
 	if err := dec(in); err != nil {
@@ -332,6 +382,24 @@ func _CampaignTool_LeaveCampaign_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CampaignToolServer).LeaveCampaign(ctx, req.(*LeaveCampaignRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CampaignTool_RemovePlayer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemovePlayerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).RemovePlayer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_RemovePlayer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).RemovePlayer(ctx, req.(*RemovePlayerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -460,6 +528,10 @@ var CampaignTool_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CampaignTool_DeleteCampaign_Handler,
 		},
 		{
+			MethodName: "UpdateCampaign",
+			Handler:    _CampaignTool_UpdateCampaign_Handler,
+		},
+		{
 			MethodName: "GenerateInviteCode",
 			Handler:    _CampaignTool_GenerateInviteCode_Handler,
 		},
@@ -470,6 +542,10 @@ var CampaignTool_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LeaveCampaign",
 			Handler:    _CampaignTool_LeaveCampaign_Handler,
+		},
+		{
+			MethodName: "RemovePlayer",
+			Handler:    _CampaignTool_RemovePlayer_Handler,
 		},
 		{
 			MethodName: "GetCreatedCampaigns",
