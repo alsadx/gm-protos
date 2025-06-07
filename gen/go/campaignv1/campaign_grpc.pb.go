@@ -19,13 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CampaignTool_CreateCampaign_FullMethodName      = "/campaign.CampaignTool/CreateCampaign"
-	CampaignTool_DeleteCampaign_FullMethodName      = "/campaign.CampaignTool/DeleteCampaign"
-	CampaignTool_GenerateInviteCode_FullMethodName  = "/campaign.CampaignTool/GenerateInviteCode"
-	CampaignTool_JoinCampaign_FullMethodName        = "/campaign.CampaignTool/JoinCampaign"
-	CampaignTool_LeaveCampaign_FullMethodName       = "/campaign.CampaignTool/LeaveCampaign"
-	CampaignTool_GetCreatedCampaigns_FullMethodName = "/campaign.CampaignTool/GetCreatedCampaigns"
-	CampaignTool_GetCurrentCampaigns_FullMethodName = "/campaign.CampaignTool/GetCurrentCampaigns"
+	CampaignTool_CreateCampaign_FullMethodName        = "/campaign.CampaignTool/CreateCampaign"
+	CampaignTool_DeleteCampaign_FullMethodName        = "/campaign.CampaignTool/DeleteCampaign"
+	CampaignTool_GenerateInviteCode_FullMethodName    = "/campaign.CampaignTool/GenerateInviteCode"
+	CampaignTool_JoinCampaign_FullMethodName          = "/campaign.CampaignTool/JoinCampaign"
+	CampaignTool_LeaveCampaign_FullMethodName         = "/campaign.CampaignTool/LeaveCampaign"
+	CampaignTool_GetCreatedCampaigns_FullMethodName   = "/campaign.CampaignTool/GetCreatedCampaigns"
+	CampaignTool_GetCurrentCampaigns_FullMethodName   = "/campaign.CampaignTool/GetCurrentCampaigns"
+	CampaignTool_GetCampaignPlayers_FullMethodName    = "/campaign.CampaignTool/GetCampaignPlayers"
+	CampaignTool_GetCampaignCharacters_FullMethodName = "/campaign.CampaignTool/GetCampaignCharacters"
+	CampaignTool_GetPlayerCharacters_FullMethodName   = "/campaign.CampaignTool/GetPlayerCharacters"
+	CampaignTool_GetCampaignNPC_FullMethodName        = "/campaign.CampaignTool/GetCampaignNPC"
 )
 
 // CampaignToolClient is the client API for CampaignTool service.
@@ -39,6 +43,10 @@ type CampaignToolClient interface {
 	LeaveCampaign(ctx context.Context, in *LeaveCampaignRequest, opts ...grpc.CallOption) (*LeaveCampaignResponse, error)
 	GetCreatedCampaigns(ctx context.Context, in *GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*GetCreatedCampaignsResponse, error)
 	GetCurrentCampaigns(ctx context.Context, in *GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*GetCurrentCampaignsResponse, error)
+	GetCampaignPlayers(ctx context.Context, in *GetCampaignPlayersRequest, opts ...grpc.CallOption) (*GetCampaignPlayersResponse, error)
+	GetCampaignCharacters(ctx context.Context, in *GetCampaignCharactersRequest, opts ...grpc.CallOption) (*GetCampaignCharactersResponse, error)
+	GetPlayerCharacters(ctx context.Context, in *GetPlayerCharactersRequest, opts ...grpc.CallOption) (*GetPlayerCharactersResponse, error)
+	GetCampaignNPC(ctx context.Context, in *GetCampaignNPCRequest, opts ...grpc.CallOption) (*GetCampaignNPCResponse, error)
 }
 
 type campaignToolClient struct {
@@ -119,6 +127,46 @@ func (c *campaignToolClient) GetCurrentCampaigns(ctx context.Context, in *GetCur
 	return out, nil
 }
 
+func (c *campaignToolClient) GetCampaignPlayers(ctx context.Context, in *GetCampaignPlayersRequest, opts ...grpc.CallOption) (*GetCampaignPlayersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCampaignPlayersResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_GetCampaignPlayers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *campaignToolClient) GetCampaignCharacters(ctx context.Context, in *GetCampaignCharactersRequest, opts ...grpc.CallOption) (*GetCampaignCharactersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCampaignCharactersResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_GetCampaignCharacters_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *campaignToolClient) GetPlayerCharacters(ctx context.Context, in *GetPlayerCharactersRequest, opts ...grpc.CallOption) (*GetPlayerCharactersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPlayerCharactersResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_GetPlayerCharacters_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *campaignToolClient) GetCampaignNPC(ctx context.Context, in *GetCampaignNPCRequest, opts ...grpc.CallOption) (*GetCampaignNPCResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCampaignNPCResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_GetCampaignNPC_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CampaignToolServer is the server API for CampaignTool service.
 // All implementations must embed UnimplementedCampaignToolServer
 // for forward compatibility.
@@ -130,6 +178,10 @@ type CampaignToolServer interface {
 	LeaveCampaign(context.Context, *LeaveCampaignRequest) (*LeaveCampaignResponse, error)
 	GetCreatedCampaigns(context.Context, *GetCreatedCampaignsRequest) (*GetCreatedCampaignsResponse, error)
 	GetCurrentCampaigns(context.Context, *GetCurrentCampaignsRequest) (*GetCurrentCampaignsResponse, error)
+	GetCampaignPlayers(context.Context, *GetCampaignPlayersRequest) (*GetCampaignPlayersResponse, error)
+	GetCampaignCharacters(context.Context, *GetCampaignCharactersRequest) (*GetCampaignCharactersResponse, error)
+	GetPlayerCharacters(context.Context, *GetPlayerCharactersRequest) (*GetPlayerCharactersResponse, error)
+	GetCampaignNPC(context.Context, *GetCampaignNPCRequest) (*GetCampaignNPCResponse, error)
 	mustEmbedUnimplementedCampaignToolServer()
 }
 
@@ -160,6 +212,18 @@ func (UnimplementedCampaignToolServer) GetCreatedCampaigns(context.Context, *Get
 }
 func (UnimplementedCampaignToolServer) GetCurrentCampaigns(context.Context, *GetCurrentCampaignsRequest) (*GetCurrentCampaignsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCurrentCampaigns not implemented")
+}
+func (UnimplementedCampaignToolServer) GetCampaignPlayers(context.Context, *GetCampaignPlayersRequest) (*GetCampaignPlayersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignPlayers not implemented")
+}
+func (UnimplementedCampaignToolServer) GetCampaignCharacters(context.Context, *GetCampaignCharactersRequest) (*GetCampaignCharactersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignCharacters not implemented")
+}
+func (UnimplementedCampaignToolServer) GetPlayerCharacters(context.Context, *GetPlayerCharactersRequest) (*GetPlayerCharactersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerCharacters not implemented")
+}
+func (UnimplementedCampaignToolServer) GetCampaignNPC(context.Context, *GetCampaignNPCRequest) (*GetCampaignNPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignNPC not implemented")
 }
 func (UnimplementedCampaignToolServer) mustEmbedUnimplementedCampaignToolServer() {}
 func (UnimplementedCampaignToolServer) testEmbeddedByValue()                      {}
@@ -308,6 +372,78 @@ func _CampaignTool_GetCurrentCampaigns_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CampaignTool_GetCampaignPlayers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCampaignPlayersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).GetCampaignPlayers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_GetCampaignPlayers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).GetCampaignPlayers(ctx, req.(*GetCampaignPlayersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CampaignTool_GetCampaignCharacters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCampaignCharactersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).GetCampaignCharacters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_GetCampaignCharacters_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).GetCampaignCharacters(ctx, req.(*GetCampaignCharactersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CampaignTool_GetPlayerCharacters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPlayerCharactersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).GetPlayerCharacters(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_GetPlayerCharacters_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).GetPlayerCharacters(ctx, req.(*GetPlayerCharactersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CampaignTool_GetCampaignNPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCampaignNPCRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).GetCampaignNPC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_GetCampaignNPC_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).GetCampaignNPC(ctx, req.(*GetCampaignNPCRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CampaignTool_ServiceDesc is the grpc.ServiceDesc for CampaignTool service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +478,22 @@ var CampaignTool_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCurrentCampaigns",
 			Handler:    _CampaignTool_GetCurrentCampaigns_Handler,
+		},
+		{
+			MethodName: "GetCampaignPlayers",
+			Handler:    _CampaignTool_GetCampaignPlayers_Handler,
+		},
+		{
+			MethodName: "GetCampaignCharacters",
+			Handler:    _CampaignTool_GetCampaignCharacters_Handler,
+		},
+		{
+			MethodName: "GetPlayerCharacters",
+			Handler:    _CampaignTool_GetPlayerCharacters_Handler,
+		},
+		{
+			MethodName: "GetCampaignNPC",
+			Handler:    _CampaignTool_GetCampaignNPC_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

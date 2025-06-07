@@ -53,6 +53,30 @@ service CampaignTool {
             get: "/api/campaigns/current/{user_id}"
         };
     }
+
+    rpc GetCampaignPlayers (GetCampaignPlayersRequest) returns (GetCampaignPlayersResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/{campaign_id}/players"
+        };
+    }
+
+    rpc GetCampaignCharacters (GetCampaignCharactersRequest) returns (GetCampaignCharactersResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/{campaign_id}/characters"
+        };
+    }
+
+    rpc GetPlayerCharacters (GetPlayerCharactersRequest) returns (GetPlayerCharactersResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/{campaign_id}/characters/{user_id}"
+        };
+    }
+
+    rpc GetCampaignNPC (GetCampaignNPCRequest) returns (GetCampaignNPCResponse) {
+        option (google.api.http) = {
+            get: "/api/campaigns/{campaign_id}/characters/NPC"
+        };
+    }
 }
 
 message CreateCampaignRequest {
@@ -131,4 +155,42 @@ message CampaignForPlayer {
 
 message GetCurrentCampaignsResponse {
     repeated CampaignForPlayer campaigns = 1;
+}
+
+message GetCampaignPlayersRequest {
+    int64 campaign_id = 1;
+}
+
+message GetCampaignPlayersResponse {
+    repeated int64 players_id = 1;
+}
+
+message GetCampaignCharactersRequest {
+    int64 campaign_id = 1;
+}
+
+message CampaignCharacter {
+    int64 character_id = 1;
+    int64 user_id = 2;
+}
+
+message GetCampaignCharactersResponse {
+    repeated CampaignCharacter characters = 1;
+}
+
+message GetPlayerCharactersRequest {
+    int64 user_id = 1;
+    int64 campaign_id = 2;
+}
+
+message GetPlayerCharactersResponse {
+    repeated int64 characters_id = 1;
+}
+
+message GetCampaignNPCRequest {
+    int64 campaign_id = 1;
+}
+
+message GetCampaignNPCResponse {
+    repeated int64 characters_id = 1;
 }

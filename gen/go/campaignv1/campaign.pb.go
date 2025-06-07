@@ -839,6 +839,418 @@ func (x *GetCurrentCampaignsResponse) GetCampaigns() []*CampaignForPlayer {
 	return nil
 }
 
+type GetCampaignPlayersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCampaignPlayersRequest) Reset() {
+	*x = GetCampaignPlayersRequest{}
+	mi := &file_campaign_campaign_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCampaignPlayersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCampaignPlayersRequest) ProtoMessage() {}
+
+func (x *GetCampaignPlayersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCampaignPlayersRequest.ProtoReflect.Descriptor instead.
+func (*GetCampaignPlayersRequest) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetCampaignPlayersRequest) GetCampaignId() int64 {
+	if x != nil {
+		return x.CampaignId
+	}
+	return 0
+}
+
+type GetCampaignPlayersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayersId     []int64                `protobuf:"varint,1,rep,packed,name=players_id,json=playersId,proto3" json:"players_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCampaignPlayersResponse) Reset() {
+	*x = GetCampaignPlayersResponse{}
+	mi := &file_campaign_campaign_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCampaignPlayersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCampaignPlayersResponse) ProtoMessage() {}
+
+func (x *GetCampaignPlayersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCampaignPlayersResponse.ProtoReflect.Descriptor instead.
+func (*GetCampaignPlayersResponse) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetCampaignPlayersResponse) GetPlayersId() []int64 {
+	if x != nil {
+		return x.PlayersId
+	}
+	return nil
+}
+
+type GetCampaignCharactersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCampaignCharactersRequest) Reset() {
+	*x = GetCampaignCharactersRequest{}
+	mi := &file_campaign_campaign_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCampaignCharactersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCampaignCharactersRequest) ProtoMessage() {}
+
+func (x *GetCampaignCharactersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCampaignCharactersRequest.ProtoReflect.Descriptor instead.
+func (*GetCampaignCharactersRequest) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetCampaignCharactersRequest) GetCampaignId() int64 {
+	if x != nil {
+		return x.CampaignId
+	}
+	return 0
+}
+
+type CampaignCharacter struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CharacterId   int64                  `protobuf:"varint,1,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CampaignCharacter) Reset() {
+	*x = CampaignCharacter{}
+	mi := &file_campaign_campaign_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CampaignCharacter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CampaignCharacter) ProtoMessage() {}
+
+func (x *CampaignCharacter) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CampaignCharacter.ProtoReflect.Descriptor instead.
+func (*CampaignCharacter) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *CampaignCharacter) GetCharacterId() int64 {
+	if x != nil {
+		return x.CharacterId
+	}
+	return 0
+}
+
+func (x *CampaignCharacter) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type GetCampaignCharactersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Characters    []*CampaignCharacter   `protobuf:"bytes,1,rep,name=characters,proto3" json:"characters,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCampaignCharactersResponse) Reset() {
+	*x = GetCampaignCharactersResponse{}
+	mi := &file_campaign_campaign_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCampaignCharactersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCampaignCharactersResponse) ProtoMessage() {}
+
+func (x *GetCampaignCharactersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCampaignCharactersResponse.ProtoReflect.Descriptor instead.
+func (*GetCampaignCharactersResponse) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *GetCampaignCharactersResponse) GetCharacters() []*CampaignCharacter {
+	if x != nil {
+		return x.Characters
+	}
+	return nil
+}
+
+type GetPlayerCharactersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	CampaignId    int64                  `protobuf:"varint,2,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPlayerCharactersRequest) Reset() {
+	*x = GetPlayerCharactersRequest{}
+	mi := &file_campaign_campaign_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPlayerCharactersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPlayerCharactersRequest) ProtoMessage() {}
+
+func (x *GetPlayerCharactersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPlayerCharactersRequest.ProtoReflect.Descriptor instead.
+func (*GetPlayerCharactersRequest) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetPlayerCharactersRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *GetPlayerCharactersRequest) GetCampaignId() int64 {
+	if x != nil {
+		return x.CampaignId
+	}
+	return 0
+}
+
+type GetPlayerCharactersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CharactersId  []int64                `protobuf:"varint,1,rep,packed,name=characters_id,json=charactersId,proto3" json:"characters_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPlayerCharactersResponse) Reset() {
+	*x = GetPlayerCharactersResponse{}
+	mi := &file_campaign_campaign_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPlayerCharactersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPlayerCharactersResponse) ProtoMessage() {}
+
+func (x *GetPlayerCharactersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPlayerCharactersResponse.ProtoReflect.Descriptor instead.
+func (*GetPlayerCharactersResponse) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetPlayerCharactersResponse) GetCharactersId() []int64 {
+	if x != nil {
+		return x.CharactersId
+	}
+	return nil
+}
+
+type GetCampaignNPCRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCampaignNPCRequest) Reset() {
+	*x = GetCampaignNPCRequest{}
+	mi := &file_campaign_campaign_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCampaignNPCRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCampaignNPCRequest) ProtoMessage() {}
+
+func (x *GetCampaignNPCRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCampaignNPCRequest.ProtoReflect.Descriptor instead.
+func (*GetCampaignNPCRequest) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *GetCampaignNPCRequest) GetCampaignId() int64 {
+	if x != nil {
+		return x.CampaignId
+	}
+	return 0
+}
+
+type GetCampaignNPCResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CharactersId  []int64                `protobuf:"varint,1,rep,packed,name=characters_id,json=charactersId,proto3" json:"characters_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCampaignNPCResponse) Reset() {
+	*x = GetCampaignNPCResponse{}
+	mi := &file_campaign_campaign_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCampaignNPCResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCampaignNPCResponse) ProtoMessage() {}
+
+func (x *GetCampaignNPCResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_campaign_campaign_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCampaignNPCResponse.ProtoReflect.Descriptor instead.
+func (*GetCampaignNPCResponse) Descriptor() ([]byte, []int) {
+	return file_campaign_campaign_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *GetCampaignNPCResponse) GetCharactersId() []int64 {
+	if x != nil {
+		return x.CharactersId
+	}
+	return nil
+}
+
 var File_campaign_campaign_proto protoreflect.FileDescriptor
 
 const file_campaign_campaign_proto_rawDesc = "" +
@@ -901,7 +1313,34 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
 	"\tmaster_id\x18\x03 \x01(\x03R\bmasterId\"X\n" +
 	"\x1bGetCurrentCampaignsResponse\x129\n" +
-	"\tcampaigns\x18\x01 \x03(\v2\x1b.campaign.CampaignForPlayerR\tcampaigns2\x90\a\n" +
+	"\tcampaigns\x18\x01 \x03(\v2\x1b.campaign.CampaignForPlayerR\tcampaigns\"<\n" +
+	"\x19GetCampaignPlayersRequest\x12\x1f\n" +
+	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
+	"campaignId\";\n" +
+	"\x1aGetCampaignPlayersResponse\x12\x1d\n" +
+	"\n" +
+	"players_id\x18\x01 \x03(\x03R\tplayersId\"?\n" +
+	"\x1cGetCampaignCharactersRequest\x12\x1f\n" +
+	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
+	"campaignId\"O\n" +
+	"\x11CampaignCharacter\x12!\n" +
+	"\fcharacter_id\x18\x01 \x01(\x03R\vcharacterId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\"\\\n" +
+	"\x1dGetCampaignCharactersResponse\x12;\n" +
+	"\n" +
+	"characters\x18\x01 \x03(\v2\x1b.campaign.CampaignCharacterR\n" +
+	"characters\"V\n" +
+	"\x1aGetPlayerCharactersRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1f\n" +
+	"\vcampaign_id\x18\x02 \x01(\x03R\n" +
+	"campaignId\"B\n" +
+	"\x1bGetPlayerCharactersResponse\x12#\n" +
+	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId\"8\n" +
+	"\x15GetCampaignNPCRequest\x12\x1f\n" +
+	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
+	"campaignId\"=\n" +
+	"\x16GetCampaignNPCResponse\x12#\n" +
+	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId2\xe7\v\n" +
 	"\fCampaignTool\x12n\n" +
 	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/campaigns\x12y\n" +
 	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e*\x1c/api/campaigns/{campaign_id}\x12\x94\x01\n" +
@@ -909,7 +1348,11 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\fJoinCampaign\x12\x1d.campaign.JoinCampaignRequest\x1a\x1e.campaign.JoinCampaignResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/campaigns/join\x12q\n" +
 	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/campaigns/leave\x12\x8c\x01\n" +
 	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/created/{user_id}\x12\x8c\x01\n" +
-	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/current/{user_id}B/Z-github.com/alsadx/gm-protos/gen/go/campaignv1b\x06proto3"
+	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/current/{user_id}\x12\x8d\x01\n" +
+	"\x12GetCampaignPlayers\x12#.campaign.GetCampaignPlayersRequest\x1a$.campaign.GetCampaignPlayersResponse\",\x82\xd3\xe4\x93\x02&\x12$/api/campaigns/{campaign_id}/players\x12\x99\x01\n" +
+	"\x15GetCampaignCharacters\x12&.campaign.GetCampaignCharactersRequest\x1a'.campaign.GetCampaignCharactersResponse\"/\x82\xd3\xe4\x93\x02)\x12'/api/campaigns/{campaign_id}/characters\x12\x9d\x01\n" +
+	"\x13GetPlayerCharacters\x12$.campaign.GetPlayerCharactersRequest\x1a%.campaign.GetPlayerCharactersResponse\"9\x82\xd3\xe4\x93\x023\x121/api/campaigns/{campaign_id}/characters/{user_id}\x12\x88\x01\n" +
+	"\x0eGetCampaignNPC\x12\x1f.campaign.GetCampaignNPCRequest\x1a .campaign.GetCampaignNPCResponse\"3\x82\xd3\xe4\x93\x02-\x12+/api/campaigns/{campaign_id}/characters/NPCB/Z-github.com/alsadx/gm-protos/gen/go/campaignv1b\x06proto3"
 
 var (
 	file_campaign_campaign_proto_rawDescOnce sync.Once
@@ -923,49 +1366,67 @@ func file_campaign_campaign_proto_rawDescGZIP() []byte {
 	return file_campaign_campaign_proto_rawDescData
 }
 
-var file_campaign_campaign_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_campaign_campaign_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_campaign_campaign_proto_goTypes = []any{
-	(*CreateCampaignRequest)(nil),       // 0: campaign.CreateCampaignRequest
-	(*CreateCampaignResponse)(nil),      // 1: campaign.CreateCampaignResponse
-	(*DeleteCampaignRequest)(nil),       // 2: campaign.DeleteCampaignRequest
-	(*DeleteCampaignResponse)(nil),      // 3: campaign.DeleteCampaignResponse
-	(*GenerateInviteCodeRequest)(nil),   // 4: campaign.GenerateInviteCodeRequest
-	(*GenerateInviteCodeResponse)(nil),  // 5: campaign.GenerateInviteCodeResponse
-	(*JoinCampaignRequest)(nil),         // 6: campaign.JoinCampaignRequest
-	(*JoinCampaignResponse)(nil),        // 7: campaign.JoinCampaignResponse
-	(*LeaveCampaignRequest)(nil),        // 8: campaign.LeaveCampaignRequest
-	(*LeaveCampaignResponse)(nil),       // 9: campaign.LeaveCampaignResponse
-	(*GetCreatedCampaignsRequest)(nil),  // 10: campaign.GetCreatedCampaignsRequest
-	(*Campaign)(nil),                    // 11: campaign.Campaign
-	(*GetCreatedCampaignsResponse)(nil), // 12: campaign.GetCreatedCampaignsResponse
-	(*GetCurrentCampaignsRequest)(nil),  // 13: campaign.GetCurrentCampaignsRequest
-	(*CampaignForPlayer)(nil),           // 14: campaign.CampaignForPlayer
-	(*GetCurrentCampaignsResponse)(nil), // 15: campaign.GetCurrentCampaignsResponse
-	(*timestamppb.Timestamp)(nil),       // 16: google.protobuf.Timestamp
+	(*CreateCampaignRequest)(nil),         // 0: campaign.CreateCampaignRequest
+	(*CreateCampaignResponse)(nil),        // 1: campaign.CreateCampaignResponse
+	(*DeleteCampaignRequest)(nil),         // 2: campaign.DeleteCampaignRequest
+	(*DeleteCampaignResponse)(nil),        // 3: campaign.DeleteCampaignResponse
+	(*GenerateInviteCodeRequest)(nil),     // 4: campaign.GenerateInviteCodeRequest
+	(*GenerateInviteCodeResponse)(nil),    // 5: campaign.GenerateInviteCodeResponse
+	(*JoinCampaignRequest)(nil),           // 6: campaign.JoinCampaignRequest
+	(*JoinCampaignResponse)(nil),          // 7: campaign.JoinCampaignResponse
+	(*LeaveCampaignRequest)(nil),          // 8: campaign.LeaveCampaignRequest
+	(*LeaveCampaignResponse)(nil),         // 9: campaign.LeaveCampaignResponse
+	(*GetCreatedCampaignsRequest)(nil),    // 10: campaign.GetCreatedCampaignsRequest
+	(*Campaign)(nil),                      // 11: campaign.Campaign
+	(*GetCreatedCampaignsResponse)(nil),   // 12: campaign.GetCreatedCampaignsResponse
+	(*GetCurrentCampaignsRequest)(nil),    // 13: campaign.GetCurrentCampaignsRequest
+	(*CampaignForPlayer)(nil),             // 14: campaign.CampaignForPlayer
+	(*GetCurrentCampaignsResponse)(nil),   // 15: campaign.GetCurrentCampaignsResponse
+	(*GetCampaignPlayersRequest)(nil),     // 16: campaign.GetCampaignPlayersRequest
+	(*GetCampaignPlayersResponse)(nil),    // 17: campaign.GetCampaignPlayersResponse
+	(*GetCampaignCharactersRequest)(nil),  // 18: campaign.GetCampaignCharactersRequest
+	(*CampaignCharacter)(nil),             // 19: campaign.CampaignCharacter
+	(*GetCampaignCharactersResponse)(nil), // 20: campaign.GetCampaignCharactersResponse
+	(*GetPlayerCharactersRequest)(nil),    // 21: campaign.GetPlayerCharactersRequest
+	(*GetPlayerCharactersResponse)(nil),   // 22: campaign.GetPlayerCharactersResponse
+	(*GetCampaignNPCRequest)(nil),         // 23: campaign.GetCampaignNPCRequest
+	(*GetCampaignNPCResponse)(nil),        // 24: campaign.GetCampaignNPCResponse
+	(*timestamppb.Timestamp)(nil),         // 25: google.protobuf.Timestamp
 }
 var file_campaign_campaign_proto_depIdxs = []int32{
-	16, // 0: campaign.Campaign.created_at:type_name -> google.protobuf.Timestamp
+	25, // 0: campaign.Campaign.created_at:type_name -> google.protobuf.Timestamp
 	11, // 1: campaign.GetCreatedCampaignsResponse.campaigns:type_name -> campaign.Campaign
 	14, // 2: campaign.GetCurrentCampaignsResponse.campaigns:type_name -> campaign.CampaignForPlayer
-	0,  // 3: campaign.CampaignTool.CreateCampaign:input_type -> campaign.CreateCampaignRequest
-	2,  // 4: campaign.CampaignTool.DeleteCampaign:input_type -> campaign.DeleteCampaignRequest
-	4,  // 5: campaign.CampaignTool.GenerateInviteCode:input_type -> campaign.GenerateInviteCodeRequest
-	6,  // 6: campaign.CampaignTool.JoinCampaign:input_type -> campaign.JoinCampaignRequest
-	8,  // 7: campaign.CampaignTool.LeaveCampaign:input_type -> campaign.LeaveCampaignRequest
-	10, // 8: campaign.CampaignTool.GetCreatedCampaigns:input_type -> campaign.GetCreatedCampaignsRequest
-	13, // 9: campaign.CampaignTool.GetCurrentCampaigns:input_type -> campaign.GetCurrentCampaignsRequest
-	1,  // 10: campaign.CampaignTool.CreateCampaign:output_type -> campaign.CreateCampaignResponse
-	3,  // 11: campaign.CampaignTool.DeleteCampaign:output_type -> campaign.DeleteCampaignResponse
-	5,  // 12: campaign.CampaignTool.GenerateInviteCode:output_type -> campaign.GenerateInviteCodeResponse
-	7,  // 13: campaign.CampaignTool.JoinCampaign:output_type -> campaign.JoinCampaignResponse
-	9,  // 14: campaign.CampaignTool.LeaveCampaign:output_type -> campaign.LeaveCampaignResponse
-	12, // 15: campaign.CampaignTool.GetCreatedCampaigns:output_type -> campaign.GetCreatedCampaignsResponse
-	15, // 16: campaign.CampaignTool.GetCurrentCampaigns:output_type -> campaign.GetCurrentCampaignsResponse
-	10, // [10:17] is the sub-list for method output_type
-	3,  // [3:10] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	19, // 3: campaign.GetCampaignCharactersResponse.characters:type_name -> campaign.CampaignCharacter
+	0,  // 4: campaign.CampaignTool.CreateCampaign:input_type -> campaign.CreateCampaignRequest
+	2,  // 5: campaign.CampaignTool.DeleteCampaign:input_type -> campaign.DeleteCampaignRequest
+	4,  // 6: campaign.CampaignTool.GenerateInviteCode:input_type -> campaign.GenerateInviteCodeRequest
+	6,  // 7: campaign.CampaignTool.JoinCampaign:input_type -> campaign.JoinCampaignRequest
+	8,  // 8: campaign.CampaignTool.LeaveCampaign:input_type -> campaign.LeaveCampaignRequest
+	10, // 9: campaign.CampaignTool.GetCreatedCampaigns:input_type -> campaign.GetCreatedCampaignsRequest
+	13, // 10: campaign.CampaignTool.GetCurrentCampaigns:input_type -> campaign.GetCurrentCampaignsRequest
+	16, // 11: campaign.CampaignTool.GetCampaignPlayers:input_type -> campaign.GetCampaignPlayersRequest
+	18, // 12: campaign.CampaignTool.GetCampaignCharacters:input_type -> campaign.GetCampaignCharactersRequest
+	21, // 13: campaign.CampaignTool.GetPlayerCharacters:input_type -> campaign.GetPlayerCharactersRequest
+	23, // 14: campaign.CampaignTool.GetCampaignNPC:input_type -> campaign.GetCampaignNPCRequest
+	1,  // 15: campaign.CampaignTool.CreateCampaign:output_type -> campaign.CreateCampaignResponse
+	3,  // 16: campaign.CampaignTool.DeleteCampaign:output_type -> campaign.DeleteCampaignResponse
+	5,  // 17: campaign.CampaignTool.GenerateInviteCode:output_type -> campaign.GenerateInviteCodeResponse
+	7,  // 18: campaign.CampaignTool.JoinCampaign:output_type -> campaign.JoinCampaignResponse
+	9,  // 19: campaign.CampaignTool.LeaveCampaign:output_type -> campaign.LeaveCampaignResponse
+	12, // 20: campaign.CampaignTool.GetCreatedCampaigns:output_type -> campaign.GetCreatedCampaignsResponse
+	15, // 21: campaign.CampaignTool.GetCurrentCampaigns:output_type -> campaign.GetCurrentCampaignsResponse
+	17, // 22: campaign.CampaignTool.GetCampaignPlayers:output_type -> campaign.GetCampaignPlayersResponse
+	20, // 23: campaign.CampaignTool.GetCampaignCharacters:output_type -> campaign.GetCampaignCharactersResponse
+	22, // 24: campaign.CampaignTool.GetPlayerCharacters:output_type -> campaign.GetPlayerCharactersResponse
+	24, // 25: campaign.CampaignTool.GetCampaignNPC:output_type -> campaign.GetCampaignNPCResponse
+	15, // [15:26] is the sub-list for method output_type
+	4,  // [4:15] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_campaign_campaign_proto_init() }
@@ -981,7 +1442,7 @@ func file_campaign_campaign_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_campaign_campaign_proto_rawDesc), len(file_campaign_campaign_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

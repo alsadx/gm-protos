@@ -9,7 +9,7 @@ tasks:
   gen-game:
     desc: "Generate code from proto file campaign"
     cmds:
-      - protoc -I proto proto/campaign/*.proto --go_out=./gen/go/ --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+      - protoc -I proto -I third_party/googleapis proto/campaign/*.proto --go_out=./gen/go/ --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
 
   gen-api:
     desc: "Generate code from proto file api"
