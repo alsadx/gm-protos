@@ -204,13 +204,13 @@ message GetCampaignCharactersRequest {
     int64 campaign_id = 1;
 }
 
-message CampaignCharacter {
-    int64 character_id = 1;
-    int64 user_id = 2;
+message CampaignCharacters {
+    int64 user_id = 1;
+    repeated int64 character_ids = 2;
 }
 
 message GetCampaignCharactersResponse {
-    repeated CampaignCharacter characters = 1;
+    repeated CampaignCharacters characters = 1;
 }
 
 message GetPlayerCharactersRequest {
