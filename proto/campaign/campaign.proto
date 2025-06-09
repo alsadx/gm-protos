@@ -56,6 +56,20 @@ service CampaignTool {
         };
     }
 
+    rpc AddCharacter (AddCharacterRequest) returns (AddCharacterResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/{campaign_id}/add-character"
+            body: "*"
+        };
+    }
+
+    rpc RemoveCharacter (RemoveCharacterRequest) returns (RemoveCharacterResponse) {
+        option (google.api.http) = {
+            post: "/api/campaigns/{campaign_id}/remove-character"
+            body: "*"
+        };
+    }
+
     rpc GetCreatedCampaigns (GetCreatedCampaignsRequest) returns (GetCreatedCampaignsResponse) {
         option (google.api.http) = {
             get: "/api/campaigns/created/{user_id}"
@@ -158,6 +172,26 @@ message RemovePlayerRequest {
 }
 
 message RemovePlayerResponse {
+    bool success = 1;
+}
+
+message AddCharacterRequest {
+    int64 campaign_id = 1;
+    int64 user_id = 2;
+    int64 character_id = 3;
+}
+
+message AddCharacterResponse {
+    bool success = 1;
+}
+
+message RemoveCharacterRequest {
+    int64 campaign_id = 1;
+    int64 user_id = 2;
+    int64 character_id = 3;
+}
+
+message RemoveCharacterResponse {
     bool success = 1;
 }
 

@@ -26,6 +26,8 @@ const (
 	CampaignTool_JoinCampaign_FullMethodName          = "/campaign.CampaignTool/JoinCampaign"
 	CampaignTool_LeaveCampaign_FullMethodName         = "/campaign.CampaignTool/LeaveCampaign"
 	CampaignTool_RemovePlayer_FullMethodName          = "/campaign.CampaignTool/RemovePlayer"
+	CampaignTool_AddCharacter_FullMethodName          = "/campaign.CampaignTool/AddCharacter"
+	CampaignTool_RemoveCharacter_FullMethodName       = "/campaign.CampaignTool/RemoveCharacter"
 	CampaignTool_GetCreatedCampaigns_FullMethodName   = "/campaign.CampaignTool/GetCreatedCampaigns"
 	CampaignTool_GetCurrentCampaigns_FullMethodName   = "/campaign.CampaignTool/GetCurrentCampaigns"
 	CampaignTool_GetCampaignPlayers_FullMethodName    = "/campaign.CampaignTool/GetCampaignPlayers"
@@ -45,6 +47,8 @@ type CampaignToolClient interface {
 	JoinCampaign(ctx context.Context, in *JoinCampaignRequest, opts ...grpc.CallOption) (*JoinCampaignResponse, error)
 	LeaveCampaign(ctx context.Context, in *LeaveCampaignRequest, opts ...grpc.CallOption) (*LeaveCampaignResponse, error)
 	RemovePlayer(ctx context.Context, in *RemovePlayerRequest, opts ...grpc.CallOption) (*RemovePlayerResponse, error)
+	AddCharacter(ctx context.Context, in *AddCharacterRequest, opts ...grpc.CallOption) (*AddCharacterResponse, error)
+	RemoveCharacter(ctx context.Context, in *RemoveCharacterRequest, opts ...grpc.CallOption) (*RemoveCharacterResponse, error)
 	GetCreatedCampaigns(ctx context.Context, in *GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*GetCreatedCampaignsResponse, error)
 	GetCurrentCampaigns(ctx context.Context, in *GetCurrentCampaignsRequest, opts ...grpc.CallOption) (*GetCurrentCampaignsResponse, error)
 	GetCampaignPlayers(ctx context.Context, in *GetCampaignPlayersRequest, opts ...grpc.CallOption) (*GetCampaignPlayersResponse, error)
@@ -131,6 +135,26 @@ func (c *campaignToolClient) RemovePlayer(ctx context.Context, in *RemovePlayerR
 	return out, nil
 }
 
+func (c *campaignToolClient) AddCharacter(ctx context.Context, in *AddCharacterRequest, opts ...grpc.CallOption) (*AddCharacterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddCharacterResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_AddCharacter_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *campaignToolClient) RemoveCharacter(ctx context.Context, in *RemoveCharacterRequest, opts ...grpc.CallOption) (*RemoveCharacterResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveCharacterResponse)
+	err := c.cc.Invoke(ctx, CampaignTool_RemoveCharacter_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *campaignToolClient) GetCreatedCampaigns(ctx context.Context, in *GetCreatedCampaignsRequest, opts ...grpc.CallOption) (*GetCreatedCampaignsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetCreatedCampaignsResponse)
@@ -202,6 +226,8 @@ type CampaignToolServer interface {
 	JoinCampaign(context.Context, *JoinCampaignRequest) (*JoinCampaignResponse, error)
 	LeaveCampaign(context.Context, *LeaveCampaignRequest) (*LeaveCampaignResponse, error)
 	RemovePlayer(context.Context, *RemovePlayerRequest) (*RemovePlayerResponse, error)
+	AddCharacter(context.Context, *AddCharacterRequest) (*AddCharacterResponse, error)
+	RemoveCharacter(context.Context, *RemoveCharacterRequest) (*RemoveCharacterResponse, error)
 	GetCreatedCampaigns(context.Context, *GetCreatedCampaignsRequest) (*GetCreatedCampaignsResponse, error)
 	GetCurrentCampaigns(context.Context, *GetCurrentCampaignsRequest) (*GetCurrentCampaignsResponse, error)
 	GetCampaignPlayers(context.Context, *GetCampaignPlayersRequest) (*GetCampaignPlayersResponse, error)
@@ -238,6 +264,12 @@ func (UnimplementedCampaignToolServer) LeaveCampaign(context.Context, *LeaveCamp
 }
 func (UnimplementedCampaignToolServer) RemovePlayer(context.Context, *RemovePlayerRequest) (*RemovePlayerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemovePlayer not implemented")
+}
+func (UnimplementedCampaignToolServer) AddCharacter(context.Context, *AddCharacterRequest) (*AddCharacterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddCharacter not implemented")
+}
+func (UnimplementedCampaignToolServer) RemoveCharacter(context.Context, *RemoveCharacterRequest) (*RemoveCharacterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveCharacter not implemented")
 }
 func (UnimplementedCampaignToolServer) GetCreatedCampaigns(context.Context, *GetCreatedCampaignsRequest) (*GetCreatedCampaignsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCreatedCampaigns not implemented")
@@ -404,6 +436,42 @@ func _CampaignTool_RemovePlayer_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CampaignTool_AddCharacter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddCharacterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).AddCharacter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_AddCharacter_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).AddCharacter(ctx, req.(*AddCharacterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CampaignTool_RemoveCharacter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveCharacterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignToolServer).RemoveCharacter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignTool_RemoveCharacter_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignToolServer).RemoveCharacter(ctx, req.(*RemoveCharacterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CampaignTool_GetCreatedCampaigns_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetCreatedCampaignsRequest)
 	if err := dec(in); err != nil {
@@ -546,6 +614,14 @@ var CampaignTool_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemovePlayer",
 			Handler:    _CampaignTool_RemovePlayer_Handler,
+		},
+		{
+			MethodName: "AddCharacter",
+			Handler:    _CampaignTool_AddCharacter_Handler,
+		},
+		{
+			MethodName: "RemoveCharacter",
+			Handler:    _CampaignTool_RemoveCharacter_Handler,
 		},
 		{
 			MethodName: "GetCreatedCampaigns",
