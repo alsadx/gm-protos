@@ -442,6 +442,8 @@ func local_request_CampaignTool_GetCurrentCampaigns_0(ctx context.Context, marsh
 	return msg, metadata, err
 }
 
+var filter_CampaignTool_GetCampaignPlayers_0 = &utilities.DoubleArray{Encoding: map[string]int{"campaign_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+
 func request_CampaignTool_GetCampaignPlayers_0(ctx context.Context, marshaler runtime.Marshaler, client CampaignToolClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetCampaignPlayersRequest
@@ -456,6 +458,12 @@ func request_CampaignTool_GetCampaignPlayers_0(ctx context.Context, marshaler ru
 	protoReq.CampaignId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "campaign_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetCampaignPlayers_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := client.GetCampaignPlayers(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -475,9 +483,17 @@ func local_request_CampaignTool_GetCampaignPlayers_0(ctx context.Context, marsha
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "campaign_id", err)
 	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetCampaignPlayers_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
 	msg, err := server.GetCampaignPlayers(ctx, &protoReq)
 	return msg, metadata, err
 }
+
+var filter_CampaignTool_GetCampaignCharacters_0 = &utilities.DoubleArray{Encoding: map[string]int{"campaign_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 
 func request_CampaignTool_GetCampaignCharacters_0(ctx context.Context, marshaler runtime.Marshaler, client CampaignToolClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
@@ -493,6 +509,12 @@ func request_CampaignTool_GetCampaignCharacters_0(ctx context.Context, marshaler
 	protoReq.CampaignId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "campaign_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetCampaignCharacters_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := client.GetCampaignCharacters(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -511,6 +533,12 @@ func local_request_CampaignTool_GetCampaignCharacters_0(ctx context.Context, mar
 	protoReq.CampaignId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "campaign_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetCampaignCharacters_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.GetCampaignCharacters(ctx, &protoReq)
 	return msg, metadata, err
@@ -569,6 +597,8 @@ func local_request_CampaignTool_GetPlayerCharacters_0(ctx context.Context, marsh
 	return msg, metadata, err
 }
 
+var filter_CampaignTool_GetCampaignNPC_0 = &utilities.DoubleArray{Encoding: map[string]int{"campaign_id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+
 func request_CampaignTool_GetCampaignNPC_0(ctx context.Context, marshaler runtime.Marshaler, client CampaignToolClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetCampaignNPCRequest
@@ -583,6 +613,12 @@ func request_CampaignTool_GetCampaignNPC_0(ctx context.Context, marshaler runtim
 	protoReq.CampaignId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "campaign_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetCampaignNPC_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := client.GetCampaignNPC(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -601,6 +637,12 @@ func local_request_CampaignTool_GetCampaignNPC_0(ctx context.Context, marshaler 
 	protoReq.CampaignId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "campaign_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetCampaignNPC_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.GetCampaignNPC(ctx, &protoReq)
 	return msg, metadata, err

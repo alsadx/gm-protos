@@ -1266,6 +1266,7 @@ func (x *GetCurrentCampaignsResponse) GetCampaigns() []*CampaignForPlayer {
 type GetCampaignPlayersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1303,6 +1304,13 @@ func (*GetCampaignPlayersRequest) Descriptor() ([]byte, []int) {
 func (x *GetCampaignPlayersRequest) GetCampaignId() int64 {
 	if x != nil {
 		return x.CampaignId
+	}
+	return 0
+}
+
+func (x *GetCampaignPlayersRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
 	}
 	return 0
 }
@@ -1354,6 +1362,7 @@ func (x *GetCampaignPlayersResponse) GetPlayersId() []int64 {
 type GetCampaignCharactersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1391,6 +1400,13 @@ func (*GetCampaignCharactersRequest) Descriptor() ([]byte, []int) {
 func (x *GetCampaignCharactersRequest) GetCampaignId() int64 {
 	if x != nil {
 		return x.CampaignId
+	}
+	return 0
+}
+
+func (x *GetCampaignCharactersRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
 	}
 	return 0
 }
@@ -1776,16 +1792,18 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1b\n" +
 	"\tmaster_id\x18\x03 \x01(\x03R\bmasterId\"X\n" +
 	"\x1bGetCurrentCampaignsResponse\x129\n" +
-	"\tcampaigns\x18\x01 \x03(\v2\x1b.campaign.CampaignForPlayerR\tcampaigns\"<\n" +
+	"\tcampaigns\x18\x01 \x03(\v2\x1b.campaign.CampaignForPlayerR\tcampaigns\"U\n" +
 	"\x19GetCampaignPlayersRequest\x12\x1f\n" +
 	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
-	"campaignId\";\n" +
+	"campaignId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\";\n" +
 	"\x1aGetCampaignPlayersResponse\x12\x1d\n" +
 	"\n" +
-	"players_id\x18\x01 \x03(\x03R\tplayersId\"?\n" +
+	"players_id\x18\x01 \x03(\x03R\tplayersId\"X\n" +
 	"\x1cGetCampaignCharactersRequest\x12\x1f\n" +
 	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
-	"campaignId\"R\n" +
+	"campaignId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\"R\n" +
 	"\x12CampaignCharacters\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12#\n" +
 	"\rcharacter_ids\x18\x02 \x03(\x03R\fcharacterIds\"]\n" +
