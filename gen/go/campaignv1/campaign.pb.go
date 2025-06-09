@@ -1590,6 +1590,7 @@ func (x *GetPlayerCharactersResponse) GetCharactersId() []int64 {
 type GetCampaignNPCRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1627,6 +1628,13 @@ func (*GetCampaignNPCRequest) Descriptor() ([]byte, []int) {
 func (x *GetCampaignNPCRequest) GetCampaignId() int64 {
 	if x != nil {
 		return x.CampaignId
+	}
+	return 0
+}
+
+func (x *GetCampaignNPCRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
 	}
 	return 0
 }
@@ -1790,10 +1798,11 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\vcampaign_id\x18\x02 \x01(\x03R\n" +
 	"campaignId\"B\n" +
 	"\x1bGetPlayerCharactersResponse\x12#\n" +
-	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId\"8\n" +
+	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId\"Q\n" +
 	"\x15GetCampaignNPCRequest\x12\x1f\n" +
 	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
-	"campaignId\"=\n" +
+	"campaignId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\"=\n" +
 	"\x16GetCampaignNPCResponse\x12#\n" +
 	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId2\x86\x10\n" +
 	"\fCampaignTool\x12n\n" +
