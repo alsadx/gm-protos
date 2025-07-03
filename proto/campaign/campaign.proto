@@ -70,11 +70,7 @@ service CampaignTool {
         };
     }
 
-    rpc GetCreatedCampaigns (GetCreatedCampaignsRequest) returns (GetCreatedCampaignsResponse) {
-        option (google.api.http) = {
-            get: "/api/campaigns/created/{user_id}"
-        };
-    }
+    rpc GetCreatedCampaigns (GetCreatedCampaignsRequest) returns (GetCreatedCampaignsResponse) {}
 
     rpc GetCurrentCampaigns (GetCurrentCampaignsRequest) returns (GetCurrentCampaignsResponse) {
         option (google.api.http) = {

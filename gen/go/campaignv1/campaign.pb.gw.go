@@ -368,43 +368,6 @@ func local_request_CampaignTool_RemoveCharacter_0(ctx context.Context, marshaler
 	return msg, metadata, err
 }
 
-func request_CampaignTool_GetCreatedCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, client CampaignToolClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq GetCreatedCampaignsRequest
-		metadata runtime.ServerMetadata
-		err      error
-	)
-	io.Copy(io.Discard, req.Body)
-	val, ok := pathParams["user_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
-	}
-	protoReq.UserId, err = runtime.Int64(val)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
-	}
-	msg, err := client.GetCreatedCampaigns(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-}
-
-func local_request_CampaignTool_GetCreatedCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, server CampaignToolServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var (
-		protoReq GetCreatedCampaignsRequest
-		metadata runtime.ServerMetadata
-		err      error
-	)
-	val, ok := pathParams["user_id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
-	}
-	protoReq.UserId, err = runtime.Int64(val)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
-	}
-	msg, err := server.GetCreatedCampaigns(ctx, &protoReq)
-	return msg, metadata, err
-}
-
 func request_CampaignTool_GetCurrentCampaigns_0(ctx context.Context, marshaler runtime.Marshaler, client CampaignToolClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetCurrentCampaignsRequest
@@ -544,6 +507,8 @@ func local_request_CampaignTool_GetCampaignCharacters_0(ctx context.Context, mar
 	return msg, metadata, err
 }
 
+var filter_CampaignTool_GetPlayerCharacters_0 = &utilities.DoubleArray{Encoding: map[string]int{"campaign_id": 0, "user_id": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+
 func request_CampaignTool_GetPlayerCharacters_0(ctx context.Context, marshaler runtime.Marshaler, client CampaignToolClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
 		protoReq GetPlayerCharactersRequest
@@ -566,6 +531,12 @@ func request_CampaignTool_GetPlayerCharacters_0(ctx context.Context, marshaler r
 	protoReq.UserId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetPlayerCharacters_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := client.GetPlayerCharacters(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -592,6 +563,12 @@ func local_request_CampaignTool_GetPlayerCharacters_0(ctx context.Context, marsh
 	protoReq.UserId, err = runtime.Int64(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
+	}
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_CampaignTool_GetPlayerCharacters_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 	msg, err := server.GetPlayerCharacters(ctx, &protoReq)
 	return msg, metadata, err
@@ -833,26 +810,6 @@ func RegisterCampaignToolHandlerServer(ctx context.Context, mux *runtime.ServeMu
 			return
 		}
 		forward_CampaignTool_RemoveCharacter_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
-	mux.Handle(http.MethodGet, pattern_CampaignTool_GetCreatedCampaigns_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/campaign.CampaignTool/GetCreatedCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/created/{user_id}"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_CampaignTool_GetCreatedCampaigns_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_CampaignTool_GetCreatedCampaigns_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	mux.Handle(http.MethodGet, pattern_CampaignTool_GetCurrentCampaigns_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -1147,23 +1104,6 @@ func RegisterCampaignToolHandlerClient(ctx context.Context, mux *runtime.ServeMu
 		}
 		forward_CampaignTool_RemoveCharacter_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodGet, pattern_CampaignTool_GetCreatedCampaigns_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/campaign.CampaignTool/GetCreatedCampaigns", runtime.WithHTTPPathPattern("/api/campaigns/created/{user_id}"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_CampaignTool_GetCreatedCampaigns_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		forward_CampaignTool_GetCreatedCampaigns_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-	})
 	mux.Handle(http.MethodGet, pattern_CampaignTool_GetCurrentCampaigns_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -1262,7 +1202,6 @@ var (
 	pattern_CampaignTool_RemovePlayer_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "campaign_id", "remove-player"}, ""))
 	pattern_CampaignTool_AddCharacter_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "campaign_id", "add-character"}, ""))
 	pattern_CampaignTool_RemoveCharacter_0       = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "campaign_id", "remove-character"}, ""))
-	pattern_CampaignTool_GetCreatedCampaigns_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "campaigns", "created", "user_id"}, ""))
 	pattern_CampaignTool_GetCurrentCampaigns_0   = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "campaigns", "current", "user_id"}, ""))
 	pattern_CampaignTool_GetCampaignPlayers_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "campaign_id", "players"}, ""))
 	pattern_CampaignTool_GetCampaignCharacters_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"api", "campaigns", "campaign_id", "characters"}, ""))
@@ -1280,7 +1219,6 @@ var (
 	forward_CampaignTool_RemovePlayer_0          = runtime.ForwardResponseMessage
 	forward_CampaignTool_AddCharacter_0          = runtime.ForwardResponseMessage
 	forward_CampaignTool_RemoveCharacter_0       = runtime.ForwardResponseMessage
-	forward_CampaignTool_GetCreatedCampaigns_0   = runtime.ForwardResponseMessage
 	forward_CampaignTool_GetCurrentCampaigns_0   = runtime.ForwardResponseMessage
 	forward_CampaignTool_GetCampaignPlayers_0    = runtime.ForwardResponseMessage
 	forward_CampaignTool_GetCampaignCharacters_0 = runtime.ForwardResponseMessage

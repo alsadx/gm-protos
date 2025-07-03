@@ -1831,7 +1831,7 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"campaignId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\"=\n" +
 	"\x16GetCampaignNPCResponse\x12#\n" +
-	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId2\x86\x10\n" +
+	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId2\xdd\x0f\n" +
 	"\fCampaignTool\x12n\n" +
 	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/campaigns\x12y\n" +
 	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"$\x82\xd3\xe4\x93\x02\x1e*\x1c/api/campaigns/{campaign_id}\x12|\n" +
@@ -1841,8 +1841,8 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\rLeaveCampaign\x12\x1e.campaign.LeaveCampaignRequest\x1a\x1f.campaign.LeaveCampaignResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/api/campaigns/leave\x12\x84\x01\n" +
 	"\fRemovePlayer\x12\x1d.campaign.RemovePlayerRequest\x1a\x1e.campaign.RemovePlayerResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/api/campaigns/{campaign_id}/remove-player\x12\x84\x01\n" +
 	"\fAddCharacter\x12\x1d.campaign.AddCharacterRequest\x1a\x1e.campaign.AddCharacterResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/api/campaigns/{campaign_id}/add-character\x12\x90\x01\n" +
-	"\x0fRemoveCharacter\x12 .campaign.RemoveCharacterRequest\x1a!.campaign.RemoveCharacterResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/api/campaigns/{campaign_id}/remove-character\x12\x8c\x01\n" +
-	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/created/{user_id}\x12\x8c\x01\n" +
+	"\x0fRemoveCharacter\x12 .campaign.RemoveCharacterRequest\x1a!.campaign.RemoveCharacterResponse\"8\x82\xd3\xe4\x93\x022:\x01*\"-/api/campaigns/{campaign_id}/remove-character\x12d\n" +
+	"\x13GetCreatedCampaigns\x12$.campaign.GetCreatedCampaignsRequest\x1a%.campaign.GetCreatedCampaignsResponse\"\x00\x12\x8c\x01\n" +
 	"\x13GetCurrentCampaigns\x12$.campaign.GetCurrentCampaignsRequest\x1a%.campaign.GetCurrentCampaignsResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/campaigns/current/{user_id}\x12\x8d\x01\n" +
 	"\x12GetCampaignPlayers\x12#.campaign.GetCampaignPlayersRequest\x1a$.campaign.GetCampaignPlayersResponse\",\x82\xd3\xe4\x93\x02&\x12$/api/campaigns/{campaign_id}/players\x12\x99\x01\n" +
 	"\x15GetCampaignCharacters\x12&.campaign.GetCampaignCharactersRequest\x1a'.campaign.GetCampaignCharactersResponse\"/\x82\xd3\xe4\x93\x02)\x12'/api/campaigns/{campaign_id}/characters\x12\x9d\x01\n" +
