@@ -10,62 +10,62 @@ option go_package = "github.com/alsadx/gm-protos/gen/go/campaignv1";
 service CampaignTool {
     rpc CreateCampaign (CreateCampaignRequest) returns (CreateCampaignResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns"
+            post: "/v1/campaigns"
             body: "*"
         };
     }
 
     rpc DeleteCampaign (DeleteCampaignRequest) returns (DeleteCampaignResponse) {
         option (google.api.http) = {
-            delete: "/api/campaigns/{campaign_id}"
+            delete: "/v1/campaigns/{campaign_id}"
         };
     }
 
     rpc UpdateCampaign (UpdateCampaignRequest) returns (UpdateCampaignResponse) {
         option (google.api.http) = {
-            put: "/api/campaigns/{campaign_id}"
+            put: "/v1/campaigns/{campaign_id}"
             body: "*"
         };
     }
 
     rpc GenerateInviteCode (GenerateInviteCodeRequest) returns (GenerateInviteCodeResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{campaign_id}/invite-code"
+            post: "/v1/campaigns/{campaign_id}/invite-code"
             body: "*"
         };
     }
 
     rpc JoinCampaign (JoinCampaignRequest) returns (JoinCampaignResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/join"
+            post: "/v1/campaigns/join"
             body: "*"
         };
     }
 
     rpc LeaveCampaign (LeaveCampaignRequest) returns (LeaveCampaignResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/leave"
+            post: "/v1/campaigns/{campaign_id}/leave"
             body: "*"
         };
     }
 
     rpc RemovePlayer (RemovePlayerRequest) returns (RemovePlayerResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{campaign_id}/remove-player"
+            post: "/v1/campaigns/{campaign_id}/remove-player"
             body: "*"
         };
     }
 
     rpc AddCharacter (AddCharacterRequest) returns (AddCharacterResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{campaign_id}/add-character"
+            post: "/v1/campaigns/{campaign_id}/add-character"
             body: "*"
         };
     }
 
     rpc RemoveCharacter (RemoveCharacterRequest) returns (RemoveCharacterResponse) {
         option (google.api.http) = {
-            post: "/api/campaigns/{campaign_id}/remove-character"
+            post: "/v1/campaigns/{campaign_id}/remove-character"
             body: "*"
         };
     }
@@ -74,33 +74,28 @@ service CampaignTool {
 
     rpc GetCurrentCampaigns (GetCurrentCampaignsRequest) returns (GetCurrentCampaignsResponse) {
         option (google.api.http) = {
-            get: "/api/campaigns/current/{user_id}"
+            get: "/v1/campaigns/current"
         };
     }
 
     rpc GetCampaignPlayers (GetCampaignPlayersRequest) returns (GetCampaignPlayersResponse) {
         option (google.api.http) = {
-            get: "/api/campaigns/{campaign_id}/players"
+            get: "/v1/campaigns/{campaign_id}/players"
         };
     }
 
     rpc GetCampaignCharacters (GetCampaignCharactersRequest) returns (GetCampaignCharactersResponse) {
         option (google.api.http) = {
-            get: "/api/campaigns/{campaign_id}/characters"
+            get: "/v1/campaigns/{campaign_id}/characters"
         };
     }
 
     rpc GetPlayerCharacters (GetPlayerCharactersRequest) returns (GetPlayerCharactersResponse) {
         option (google.api.http) = {
-            get: "/api/campaigns/{campaign_id}/characters/{user_id}"
+            get: "/v1/campaigns/{campaign_id}/characters/{user_id}"
         };
     }
 
-    rpc GetCampaignNPC (GetCampaignNPCRequest) returns (GetCampaignNPCResponse) {
-        option (google.api.http) = {
-            get: "/api/campaigns/{campaign_id}/characters/NPC"
-        };
-    }
 }
 
 message CreateCampaignRequest {
@@ -252,14 +247,5 @@ message GetPlayerCharactersRequest {
 }
 
 message GetPlayerCharactersResponse {
-    repeated int64 characters_id = 1;
-}
-
-message GetCampaignNPCRequest {
-    int64 campaign_id = 1;
-    int64 user_id = 2;
-}
-
-message GetCampaignNPCResponse {
     repeated int64 characters_id = 1;
 }

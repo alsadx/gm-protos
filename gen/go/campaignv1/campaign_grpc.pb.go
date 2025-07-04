@@ -33,7 +33,6 @@ const (
 	CampaignTool_GetCampaignPlayers_FullMethodName    = "/campaign.CampaignTool/GetCampaignPlayers"
 	CampaignTool_GetCampaignCharacters_FullMethodName = "/campaign.CampaignTool/GetCampaignCharacters"
 	CampaignTool_GetPlayerCharacters_FullMethodName   = "/campaign.CampaignTool/GetPlayerCharacters"
-	CampaignTool_GetCampaignNPC_FullMethodName        = "/campaign.CampaignTool/GetCampaignNPC"
 )
 
 // CampaignToolClient is the client API for CampaignTool service.
@@ -54,7 +53,6 @@ type CampaignToolClient interface {
 	GetCampaignPlayers(ctx context.Context, in *GetCampaignPlayersRequest, opts ...grpc.CallOption) (*GetCampaignPlayersResponse, error)
 	GetCampaignCharacters(ctx context.Context, in *GetCampaignCharactersRequest, opts ...grpc.CallOption) (*GetCampaignCharactersResponse, error)
 	GetPlayerCharacters(ctx context.Context, in *GetPlayerCharactersRequest, opts ...grpc.CallOption) (*GetPlayerCharactersResponse, error)
-	GetCampaignNPC(ctx context.Context, in *GetCampaignNPCRequest, opts ...grpc.CallOption) (*GetCampaignNPCResponse, error)
 }
 
 type campaignToolClient struct {
@@ -205,16 +203,6 @@ func (c *campaignToolClient) GetPlayerCharacters(ctx context.Context, in *GetPla
 	return out, nil
 }
 
-func (c *campaignToolClient) GetCampaignNPC(ctx context.Context, in *GetCampaignNPCRequest, opts ...grpc.CallOption) (*GetCampaignNPCResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetCampaignNPCResponse)
-	err := c.cc.Invoke(ctx, CampaignTool_GetCampaignNPC_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // CampaignToolServer is the server API for CampaignTool service.
 // All implementations must embed UnimplementedCampaignToolServer
 // for forward compatibility.
@@ -233,7 +221,6 @@ type CampaignToolServer interface {
 	GetCampaignPlayers(context.Context, *GetCampaignPlayersRequest) (*GetCampaignPlayersResponse, error)
 	GetCampaignCharacters(context.Context, *GetCampaignCharactersRequest) (*GetCampaignCharactersResponse, error)
 	GetPlayerCharacters(context.Context, *GetPlayerCharactersRequest) (*GetPlayerCharactersResponse, error)
-	GetCampaignNPC(context.Context, *GetCampaignNPCRequest) (*GetCampaignNPCResponse, error)
 	mustEmbedUnimplementedCampaignToolServer()
 }
 
@@ -285,9 +272,6 @@ func (UnimplementedCampaignToolServer) GetCampaignCharacters(context.Context, *G
 }
 func (UnimplementedCampaignToolServer) GetPlayerCharacters(context.Context, *GetPlayerCharactersRequest) (*GetPlayerCharactersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlayerCharacters not implemented")
-}
-func (UnimplementedCampaignToolServer) GetCampaignNPC(context.Context, *GetCampaignNPCRequest) (*GetCampaignNPCResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignNPC not implemented")
 }
 func (UnimplementedCampaignToolServer) mustEmbedUnimplementedCampaignToolServer() {}
 func (UnimplementedCampaignToolServer) testEmbeddedByValue()                      {}
@@ -562,24 +546,6 @@ func _CampaignTool_GetPlayerCharacters_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CampaignTool_GetCampaignNPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCampaignNPCRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CampaignToolServer).GetCampaignNPC(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CampaignTool_GetCampaignNPC_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignToolServer).GetCampaignNPC(ctx, req.(*GetCampaignNPCRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // CampaignTool_ServiceDesc is the grpc.ServiceDesc for CampaignTool service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -642,10 +608,6 @@ var CampaignTool_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlayerCharacters",
 			Handler:    _CampaignTool_GetPlayerCharacters_Handler,
-		},
-		{
-			MethodName: "GetCampaignNPC",
-			Handler:    _CampaignTool_GetCampaignNPC_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
