@@ -9,26 +9,26 @@ option go_package = "github.com/alsadx/gm-protos/gen/go/ssov1";
 service UserInfo {
     rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdResponse){
         option (google.api.http) = {
-            get: "/api/users/{user_id}"
+            get: "/v1/users/{user_id}"
         };
     }
 
     rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse){
         option (google.api.http) = {
-            get: "/api/users/email/{email}"
+            get: "/v1/users/email/{email}"
         };
     }
 
     rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse){
         option (google.api.http) = {
-            put: "/api/users/{user_id}"
+            put: "/v1/users/{user_id}"
             body: "*"
         };
     }
 
     rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse){
         option (google.api.http) = {
-            delete: "/api/users/{user_id}"
+            delete: "/v1/users/{user_id}"
         };
     }
 }

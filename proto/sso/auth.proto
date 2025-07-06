@@ -9,28 +9,28 @@ option go_package = "github.com/alsadx/gm-protos/gen/go/ssov1";
 service Auth {
     rpc Register (RegisterRequest) returns (RegisterResponse){
         option (google.api.http) = {
-            post: "/api/auth/register"
+            post: "/v1/auth/register"
             body: "*"
         };
     }
 
     rpc Login (LoginRequest) returns (LoginResponse){
         option (google.api.http) = {
-            post: "/api/auth/login"
+            post: "/v1/auth/login"
             body: "*"
         };
     }
 
     rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse){
         option (google.api.http) = {
-            post: "/api/auth/refresh"
+            post: "/v1/auth/refresh"
             body: "*"
         };
     }
 
     rpc Logout (LogoutRequest) returns (LogoutResponse){
         option (google.api.http) = {
-            post: "/api/auth/logout"
+            post: "/v1/auth/logout"
             body: "*"
         };
     }
