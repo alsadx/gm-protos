@@ -435,7 +435,7 @@ type JoinCampaignRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	InviteCode    string                 `protobuf:"bytes,1,opt,name=invite_code,json=inviteCode,proto3" json:"invite_code,omitempty"`
 	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	CharacterId   int64                  `protobuf:"varint,3,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
+	CharacterId   string                 `protobuf:"bytes,3,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -484,11 +484,11 @@ func (x *JoinCampaignRequest) GetUserId() int64 {
 	return 0
 }
 
-func (x *JoinCampaignRequest) GetCharacterId() int64 {
+func (x *JoinCampaignRequest) GetCharacterId() string {
 	if x != nil {
 		return x.CharacterId
 	}
-	return 0
+	return ""
 }
 
 type JoinCampaignResponse struct {
@@ -739,7 +739,7 @@ type AddCharacterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
 	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	CharacterId   int64                  `protobuf:"varint,3,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
+	CharacterId   string                 `protobuf:"bytes,3,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -788,11 +788,11 @@ func (x *AddCharacterRequest) GetUserId() int64 {
 	return 0
 }
 
-func (x *AddCharacterRequest) GetCharacterId() int64 {
+func (x *AddCharacterRequest) GetCharacterId() string {
 	if x != nil {
 		return x.CharacterId
 	}
-	return 0
+	return ""
 }
 
 type AddCharacterResponse struct {
@@ -843,7 +843,7 @@ type RemoveCharacterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CampaignId    int64                  `protobuf:"varint,1,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
 	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	CharacterId   int64                  `protobuf:"varint,3,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
+	CharacterId   string                 `protobuf:"bytes,3,opt,name=character_id,json=characterId,proto3" json:"character_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -892,11 +892,11 @@ func (x *RemoveCharacterRequest) GetUserId() int64 {
 	return 0
 }
 
-func (x *RemoveCharacterRequest) GetCharacterId() int64 {
+func (x *RemoveCharacterRequest) GetCharacterId() string {
 	if x != nil {
 		return x.CharacterId
 	}
-	return 0
+	return ""
 }
 
 type RemoveCharacterResponse struct {
@@ -1317,7 +1317,7 @@ func (x *GetCampaignPlayersRequest) GetUserId() int64 {
 
 type GetCampaignPlayersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PlayersId     []int64                `protobuf:"varint,1,rep,packed,name=players_id,json=playersId,proto3" json:"players_id,omitempty"`
+	PlayerIds     []int64                `protobuf:"varint,1,rep,packed,name=player_ids,json=playerIds,proto3" json:"player_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1352,9 +1352,9 @@ func (*GetCampaignPlayersResponse) Descriptor() ([]byte, []int) {
 	return file_campaign_campaign_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *GetCampaignPlayersResponse) GetPlayersId() []int64 {
+func (x *GetCampaignPlayersResponse) GetPlayerIds() []int64 {
 	if x != nil {
-		return x.PlayersId
+		return x.PlayerIds
 	}
 	return nil
 }
@@ -1414,7 +1414,7 @@ func (x *GetCampaignCharactersRequest) GetUserId() int64 {
 type CampaignCharacters struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	CharacterIds  []int64                `protobuf:"varint,2,rep,packed,name=character_ids,json=characterIds,proto3" json:"character_ids,omitempty"`
+	CharacterIds  []string               `protobuf:"bytes,2,rep,name=character_ids,json=characterIds,proto3" json:"character_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1456,7 +1456,7 @@ func (x *CampaignCharacters) GetUserId() int64 {
 	return 0
 }
 
-func (x *CampaignCharacters) GetCharacterIds() []int64 {
+func (x *CampaignCharacters) GetCharacterIds() []string {
 	if x != nil {
 		return x.CharacterIds
 	}
@@ -1569,7 +1569,7 @@ func (x *GetPlayerCharactersRequest) GetCampaignId() int64 {
 
 type GetPlayerCharactersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CharactersId  []int64                `protobuf:"varint,1,rep,packed,name=characters_id,json=charactersId,proto3" json:"characters_id,omitempty"`
+	CharacterIds  []string               `protobuf:"bytes,1,rep,name=character_ids,json=characterIds,proto3" json:"character_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1604,9 +1604,9 @@ func (*GetPlayerCharactersResponse) Descriptor() ([]byte, []int) {
 	return file_campaign_campaign_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *GetPlayerCharactersResponse) GetCharactersId() []int64 {
+func (x *GetPlayerCharactersResponse) GetCharacterIds() []string {
 	if x != nil {
-		return x.CharactersId
+		return x.CharacterIds
 	}
 	return nil
 }
@@ -1651,7 +1651,7 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\vinvite_code\x18\x01 \x01(\tR\n" +
 	"inviteCode\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12!\n" +
-	"\fcharacter_id\x18\x03 \x01(\x03R\vcharacterId\"0\n" +
+	"\fcharacter_id\x18\x03 \x01(\tR\vcharacterId\"0\n" +
 	"\x14JoinCampaignResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"P\n" +
 	"\x14LeaveCampaignRequest\x12\x1f\n" +
@@ -1671,14 +1671,14 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
 	"campaignId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12!\n" +
-	"\fcharacter_id\x18\x03 \x01(\x03R\vcharacterId\"0\n" +
+	"\fcharacter_id\x18\x03 \x01(\tR\vcharacterId\"0\n" +
 	"\x14AddCharacterResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"u\n" +
 	"\x16RemoveCharacterRequest\x12\x1f\n" +
 	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
 	"campaignId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12!\n" +
-	"\fcharacter_id\x18\x03 \x01(\x03R\vcharacterId\"3\n" +
+	"\fcharacter_id\x18\x03 \x01(\tR\vcharacterId\"3\n" +
 	"\x17RemoveCharacterResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"5\n" +
 	"\x1aGetCreatedCampaignsRequest\x12\x17\n" +
@@ -1711,14 +1711,14 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\";\n" +
 	"\x1aGetCampaignPlayersResponse\x12\x1d\n" +
 	"\n" +
-	"players_id\x18\x01 \x03(\x03R\tplayersId\"X\n" +
+	"player_ids\x18\x01 \x03(\x03R\tplayerIds\"X\n" +
 	"\x1cGetCampaignCharactersRequest\x12\x1f\n" +
 	"\vcampaign_id\x18\x01 \x01(\x03R\n" +
 	"campaignId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x03R\x06userId\"R\n" +
 	"\x12CampaignCharacters\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12#\n" +
-	"\rcharacter_ids\x18\x02 \x03(\x03R\fcharacterIds\"]\n" +
+	"\rcharacter_ids\x18\x02 \x03(\tR\fcharacterIds\"]\n" +
 	"\x1dGetCampaignCharactersResponse\x12<\n" +
 	"\n" +
 	"characters\x18\x01 \x03(\v2\x1c.campaign.CampaignCharactersR\n" +
@@ -1729,7 +1729,7 @@ const file_campaign_campaign_proto_rawDesc = "" +
 	"\vcampaign_id\x18\x03 \x01(\x03R\n" +
 	"campaignId\"B\n" +
 	"\x1bGetPlayerCharactersResponse\x12#\n" +
-	"\rcharacters_id\x18\x01 \x03(\x03R\fcharactersId2\xc9\x0e\n" +
+	"\rcharacter_ids\x18\x01 \x03(\tR\fcharacterIds2\xc9\x0e\n" +
 	"\fCampaignTool\x12m\n" +
 	"\x0eCreateCampaign\x12\x1f.campaign.CreateCampaignRequest\x1a .campaign.CreateCampaignResponse\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/v1/campaigns\x12x\n" +
 	"\x0eDeleteCampaign\x12\x1f.campaign.DeleteCampaignRequest\x1a .campaign.DeleteCampaignResponse\"#\x82\xd3\xe4\x93\x02\x1d*\x1b/v1/campaigns/{campaign_id}\x12{\n" +
